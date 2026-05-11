@@ -184,3 +184,41 @@ export const popularServices = [
   "Sofa Cleaning",
   "Moving & Shifting",
 ]
+export const steps = [
+  {
+    number: 1,
+    title: "Choose Service",
+    description: "Select the service you need",
+    active: true,
+    color: "bg-rose-500",
+    border: "border-rose-500",
+    text: "text-rose-500",
+  },
+  {
+    number: 2,
+    title: "Pick Technician",
+    description: "Choose from verified professionals",
+    active: false,
+    color: "bg-blue-900",
+    border: "border-blue-900",
+    text: "text-blue-900",
+  },
+  {
+    number: 3,
+    title: "Book & Pay",
+    description: "Schedule and pay securely",
+    active: false,
+    color: "bg-rose-300",
+    border: "border-rose-300",
+    text: "text-rose-300",
+  },
+  {
+    number: 4,
+    title: "Service Done",
+    description: "Get the job done with satisfaction",
+    active: false,
+    color: "bg-blue-900",
+    border: "border-blue-900",
+    text: "text-blue-900",
+  },
+];

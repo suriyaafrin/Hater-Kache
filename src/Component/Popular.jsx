@@ -30,11 +30,11 @@ function Popular() {
   return (
     <div className="px-20 py-10">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="font-semibold text-xl text-[#1E3A5F]">
+        <h1 className="font-bold text-xl text-[#1E3A5F]">
           Popular Services
         </h1>
 
-        <div className="flex gap-2">
+        <div className="flex  gap-5">
           <button
             onClick={() => scroll(-1)}
             className="w-9 h-9 rounded-lg border font-bold flex items-center justify-center hover:bg-gray-100 hover:text-black cursor-pointer border-gray-300 bg-[#FF4D7D] text-white"
@@ -58,7 +58,7 @@ function Popular() {
           {services.map((service) => (
             <div
               key={service.label}
-              className="flex-none w-30 flex flex-col items-center text-center gap-2 p-4 rounded-2xl bg-[#FFF1F5] border border-gray-100 hover:border-gray-300 transition-colors cursor-pointer"
+              className="flex-none w-50 flex flex-col items-center text-center gap-2 p-4 rounded-2xl bg-[#FFF1F5] border border-gray-100 hover:border-gray-300 transition-colors cursor-pointer"
             >
               <div
                 className={`w-13 h-13 rounded-full flex items-center justify-center ${service.bg}`}

@@ -6,6 +6,7 @@ import heroImg from './assets/hero.png'
 import Navbar from './Component/Navbar'
 import Hiro from './Component/Hiro'
 import Popular from './Component/Popular'
+import Works from './Component/Works'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -15,6 +16,7 @@ function App() {
       <Navbar />
       <Hiro/>
       <Popular/>
+      <Works/>
     </>
   )
 }
