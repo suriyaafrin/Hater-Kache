@@ -28,7 +28,7 @@ function Popular() {
   const totalPages = Math.ceil(services.length / VISIBLE);
 
   return (
-    <div className="px-20 py-10">
+    <div className="max-w-6xl mx-auto px-6 py-20">
       <div className="flex items-center justify-between mb-6">
         <h1 className="font-bold text-xl text-[#1E3A5F]">
           Popular Services

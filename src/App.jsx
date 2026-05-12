@@ -7,6 +7,9 @@ import Navbar from './Component/Navbar'
 import Hiro from './Component/Hiro'
 import Popular from './Component/Popular'
 import Works from './Component/Works'
+import Footer from './Component/Footer'
+import FooterLower from './Component/FooterLower'
+import FooterMiddle from './Component/FooterMiddle'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -17,6 +20,9 @@ function App() {
       <Hiro/>
       <Popular/>
       <Works/>
+      <Footer/>
+      <FooterMiddle/>
+      <FooterLower/>
     </>
   )
 }
