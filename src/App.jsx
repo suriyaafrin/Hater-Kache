@@ -10,6 +10,7 @@ import Works from './Component/Works'
 import Footer from './Component/Footer'
 import FooterLower from './Component/FooterLower'
 import FooterMiddle from './Component/FooterMiddle'
+import PlumbingHiro from './Plumbing/PlumbingHiro'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,6 +24,7 @@ function App() {
       <Footer/>
       <FooterMiddle/>
       <FooterLower/>
+      <PlumbingHiro/>
     </>
   )
 }
