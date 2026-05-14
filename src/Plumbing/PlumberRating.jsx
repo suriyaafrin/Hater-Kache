@@ -1,6 +1,5 @@
 import React from 'react'
 
-// ─── Star Rating (Shared Component) ───────────────────────────────────────────
 function StarRating({ rating, size = "sm" }) {
   const full = Math.floor(rating);
   const half = rating - full >= 0.5;

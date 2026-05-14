@@ -7,8 +7,8 @@ function InfoRow({ icon, label, value }) {
         {icon}
       </div>
       <div>
-        <p className="text-xs text-gray-400">{label}</p>
-        <p className="text-sm font-medium text-gray-800">{value}</p>
+        <p className="text-xs text-[#1E3A5C]">{label}</p>
+        <p className="text-sm font-medium text-[#1E3A5C]">{value}</p>
       </div>
     </div>
   );

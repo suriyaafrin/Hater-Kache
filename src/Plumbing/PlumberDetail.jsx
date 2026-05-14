@@ -5,19 +5,17 @@ function PlumberDetail({ plumber, onClose }) {
   if (!plumber) return null;
 
   return (
-    // Backdrop
     <div
       className="fixed inset-0 z-40 flex items-end sm:items-center justify-center bg-black/30 backdrop-blur-sm animate-[fadeIn_0.15s_ease]"
       onClick={onClose}
     >
-      {/* Panel */}
+      
       <div
-        className="relative bg-white w-full sm:max-w-md rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden animate-[slideUp_0.25s_cubic-bezier(0.34,1.56,0.64,1)]"
+        className="relative bg-white w-full sm:max-w-md rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden "
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header band */}
-        <div className="bg-linear-to-br from-blue-600 to-blue-800 px-6 pt-6 pb-10 relative">
-          {/* Close */}
+        
+        <div className="bg-linear-to-br from-[#FF4D7D] to-blue-800 px-6 pt-6 pb-10 relative">
           <button
             onClick={onClose}
             className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
@@ -34,9 +32,9 @@ function PlumberDetail({ plumber, onClose }) {
             </svg>
           </button>
 
-          {/* Avatar + name */}
+
           <div className="flex items-center gap-4">
-            <div className="w-16 h-16 rounded-2xl bg-white text-blue-600 flex items-center justify-center text-xl font-bold shadow-lg">
+            <div className="w-16 h-16 rounded-2xl bg-white text-[#FF4D7D] flex items-center justify-center text-xl font-bold shadow-lg">
               {plumber.initials}
             </div>
             <div>
@@ -51,7 +49,6 @@ function PlumberDetail({ plumber, onClose }) {
             </div>
           </div>
 
-          {/* Available badge */}
           <div className="absolute bottom-4 right-5">
             {plumber.available ? (
               <span className="inline-flex items-center gap-1.5 text-xs font-semibold bg-green-400/20 text-green-200 border border-green-400/30 rounded-full px-3 py-1">
@@ -66,14 +63,12 @@ function PlumberDetail({ plumber, onClose }) {
           </div>
         </div>
 
-        {/* Body */}
         <div className="px-6 pt-5 pb-6 space-y-4 -mt-4">
-          {/* Rate highlight */}
-          <div className="bg-blue-50 border border-blue-100 rounded-2xl px-5 py-3.5 flex items-center justify-between">
-            <span className="text-sm text-blue-600 font-medium">
+          <div className="bg-[#efabbd4e] border border-blue-100 rounded-2xl px-5 py-3.5 flex items-center justify-between">
+            <span className="text-sm text-[#1E3A5F] font-medium">
               Hourly Rate
             </span>
-            <span className="text-2xl font-extrabold text-blue-700">
+            <span className="text-2xl font-extrabold text-[#39577e]">
               {plumber.rate}
             </span>
           </div>
@@ -84,7 +79,7 @@ function PlumberDetail({ plumber, onClose }) {
               icon={
                 <svg
                   viewBox="0 0 24 24"
-                  className="w-4 h-4 text-blue-500"
+                  className="w-4 h-4 text-[#3a71b8]"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth={2}
@@ -159,11 +154,11 @@ function PlumberDetail({ plumber, onClose }) {
               label="Email"
               value={
                 plumber.email ??
-                `${plumber.name.split(" ")[0].toLowerCase()}@fixpro.com`
+                `${plumber.name.split(" ")[0].toLowerCase()}@haterkache.com`
               }
             />
 
-            {/* Service areas */}
+            
             <div className="flex items-start gap-3">
               <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center shrink-0 mt-0.5">
                 <svg
@@ -200,7 +195,6 @@ function PlumberDetail({ plumber, onClose }) {
               </div>
             </div>
 
-            {/* Jobs completed */}
             <InfoRow
               icon={
                 <svg
@@ -224,7 +218,7 @@ function PlumberDetail({ plumber, onClose }) {
 
           {/* CTA buttons */}
           <div className="flex gap-3 pt-2">
-            <button className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white text-sm font-semibold rounded-xl transition-all shadow-md shadow-blue-200 flex items-center justify-center gap-2">
+            <button className="flex-1 py-3 bg-[#1E3A5C] hover:bg-blue-900 active:scale-95 text-white text-sm font-semibold rounded-xl transition-all shadow-md shadow-blue-200 flex items-center justify-center gap-2">
               <svg
                 viewBox="0 0 24 24"
                 className="w-4 h-4"
@@ -240,7 +234,7 @@ function PlumberDetail({ plumber, onClose }) {
               </svg>
               Call Now
             </button>
-            <button className="flex-1 py-3 bg-red-500 hover:bg-red-600 active:scale-95 text-white text-sm font-semibold rounded-xl transition-all shadow-md shadow-red-200 flex items-center justify-center gap-2">
+            <button className="flex-1 py-3 bg-[#FF4D7D] hover:bg-[#8d2843] active:scale-95 text-white text-sm font-semibold rounded-xl transition-all shadow-md shadow-red-200 flex items-center justify-center gap-2">
               <svg
                 viewBox="0 0 24 24"
                 className="w-4 h-4"
