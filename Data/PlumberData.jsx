@@ -183,3 +183,33 @@ export const plumbers = [
     phone: "+880 1812-123456",
   },
 ];
+
+export const timeOptions = [
+  "08:00 AM", "09:00 AM", "10:00 AM", "11:00 AM",
+  "12:00 PM", "01:00 PM", "02:00 PM", "03:00 PM",
+  "04:00 PM", "05:00 PM", "06:00 PM",
+];
+export const requiredFields = ["fullName", "phone", "address", "date"];
+
+export const fieldLabels = {
+  fullName: "Full name",
+  phone: "Phone number",
+  address: "Address",
+  date: "Date",
+};
+
+// Keyframes injected once via a <style> tag — only the @keyframe definitions,
+// no class rules. All animation application is done via inline `style` props.
+export const keyframeStyles = `
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%  { transform: translateX(-6px); }
+    40%  { transform: translateX(6px); }
+    60%  { transform: translateX(-4px); }
+    80%  { transform: translateX(4px); }
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+`;
