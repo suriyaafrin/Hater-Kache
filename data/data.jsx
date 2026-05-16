@@ -1,15 +1,25 @@
-import React from 'react'
+import { BsShieldLock } from 'react-icons/bs'
 import {
-  FaFaucet, FaBolt, FaWrench, FaPaintRoller, FaHammer,
-  FaTrash, FaBroom, FaTruck, FaKey, FaLeaf, FaDog,
-  FaShieldAlt, FaCouch, FaBoxOpen
+  FaBolt,
+  FaBroom,
+  FaCouch,
+  FaFaucet,
+  FaHammer,
+  FaKey, FaLeaf,
+  FaPaintRoller,
+  FaTrash,
+  FaTruck,
+  FaWrench
 } from 'react-icons/fa'
 import {
-  MdAcUnit, MdOutlineRoofing, MdOutlineLocalLaundryService,
-  MdOutlinePets, MdSecurity, MdOutlineIron, MdBugReport,
+  MdAcUnit,
+  MdBugReport,
+  MdOutlineIron,
+  MdOutlineLocalLaundryService,
+  MdOutlinePets,
+  MdOutlineRoofing,
   MdOutlineWaterDrop, MdVideocam
 } from 'react-icons/md'
-import { BsShieldLock } from 'react-icons/bs'
 
 export const services = [
   {

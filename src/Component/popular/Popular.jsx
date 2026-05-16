@@ -1,8 +1,9 @@
-import React, { useRef, useState, useEffect } from "react";
-import { services } from "../../Data/data.jsx";
+import { useEffect, useRef, useState } from "react";
+import { services } from "../../../data/data";
 
-const CARD_WIDTH = 132; 
-const VISIBLE = 4; 
+
+const CARD_WIDTH = 132;
+const VISIBLE = 4;
 
 function Popular() {
   const [current, setCurrent] = useState(0);
@@ -12,12 +13,12 @@ function Popular() {
   const scroll = (dir) => {
     setCurrent((prev) => {
       const next = prev + dir * VISIBLE;
-      if (next > maxIndex) return 0; 
-      if (next < 0) return maxIndex; 
+      if (next > maxIndex) return 0;
+      if (next < 0) return maxIndex;
       return next;
     });
   };
-  
+
   useEffect(() => {
     if (trackRef.current) {
       trackRef.current.style.transform = `translateX(-${current * CARD_WIDTH}px)`;
@@ -78,7 +79,7 @@ function Popular() {
         </div>
       </div>
 
-     
+
       <div className="flex justify-center gap-1.5 mt-4">
         {Array.from({ length: totalPages }).map((_, i) => (
           <button

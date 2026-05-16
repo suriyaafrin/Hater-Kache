@@ -1,4 +1,3 @@
-import React from "react";
 import StarRating from "./PlumberRating";
 
 function PlumberCard({ plumber, isSelected, onClick }) {
@@ -22,13 +21,13 @@ ${
             : "bg-pink-50 text-[#FF4D7D] group-hover:bg-pink-100"
         }`}
       >
-        {plumber.initials}
+        {plumber?.initials}
       </div>
 
       {/* Info */}
       <div className="flex-1 min-w-0">
         <p className="text-sm font-semibold text-[#1E3A5C] truncate">
-          {plumber.name}
+          {plumber?.name}
         </p>
         <p className="text-xs text-gray-400 mt-0.5 flex items-center gap-1">
           <svg
@@ -44,7 +43,7 @@ ${
               strokeLinejoin="round"
             />
           </svg>
-          {plumber.service}
+          {plumber?.service}
         </p>
         <p className="text-xs text-gray-400 mt-0.5 flex items-center gap-1">
           <svg
@@ -65,8 +64,8 @@ ${
               strokeLinejoin="round"
             />
           </svg>
-          {plumber.areas[0]}
-          {plumber.areas.length > 1 && (
+          {plumber?.areas[0]}
+          {plumber?.areas.length > 1 && (
             <span className="text-gray-300">
               +{plumber.areas.length - 1} more
             </span>
@@ -76,14 +75,14 @@ ${
 
       {/* Rating + Rate */}
       <div className="shrink-0 text-right space-y-1">
-        <p className="text-sm font-bold text-[#1E3A5C]">{plumber.rate}</p>
-        <StarRating rating={plumber.rating} />
-        <p className="text-xs text-[#1E3A5C]">{plumber.reviews} reviews</p>
+        <p className="text-sm font-bold text-[#1E3A5C]">{plumber?.rate}</p>
+        <StarRating rating={plumber?.rating} />
+        <p className="text-xs text-[#1E3A5C]">{plumber?.reviews} reviews</p>
       </div>
 
       {/* Availability */}
       <div className="shrink-0">
-        {plumber.available ? (
+        {plumber?.available ? (
           <span className="inline-flex items-center gap-1 text-xs font-medium bg-green-50 text-green-600 border border-green-100 rounded-full px-2.5 py-1">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
             Now

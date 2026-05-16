@@ -4,7 +4,7 @@ import {
   requiredFields,
   fieldLabels,
   keyframeStyles,
-} from "../../Data/PlumberData.jsx";
+} from "../../data/PlumberData.jsx";
 
 function BookingForm({ plumber, onClose, onConfirm }) {
   const [form, setForm] = useState({
@@ -228,11 +228,10 @@ function BookingForm({ plumber, onClose, onConfirm }) {
                   value={form.fullName}
                   onChange={handleChange("fullName")}
                   placeholder="Your name"
-                  className={`w-full pl-9 pr-3 py-2.5 text-sm border rounded-xl focus:outline-none focus:ring-1 transition placeholder:text-gray-300 ${
-                    errors.fullName
+                  className={`w-full pl-9 pr-3 py-2.5 text-sm border rounded-xl focus:outline-none focus:ring-1 transition placeholder:text-gray-300 ${errors.fullName
                       ? "border-red-300 focus:border-red-400 focus:ring-red-100 bg-red-50/40"
                       : "border-gray-200 focus:border-[#FF4D7D] focus:ring-pink-200"
-                  }`}
+                    }`}
                 />
               </div>
               {errors.fullName && (
@@ -298,11 +297,10 @@ function BookingForm({ plumber, onClose, onConfirm }) {
                     }))
                   }
                   placeholder="Your phone number"
-                  className={`flex-1 px-3 py-2.5 text-sm border rounded-xl focus:outline-none focus:ring-1 transition placeholder:text-gray-300 ${
-                    errors.phone
+                  className={`flex-1 px-3 py-2.5 text-sm border rounded-xl focus:outline-none focus:ring-1 transition placeholder:text-gray-300 ${errors.phone
                       ? "border-red-300 focus:border-red-400 focus:ring-red-100 bg-red-50/40"
                       : "border-gray-200 focus:border-[#FF4D7D] focus:ring-pink-200"
-                  }`}
+                    }`}
                 />
               </div>
               {errors.phone && (
@@ -325,7 +323,7 @@ function BookingForm({ plumber, onClose, onConfirm }) {
               )}
             </div>
 
-           
+
             <div style={shakeStyle("address")}>
               <label className="block text-xs font-semibold text-[#1E3A5F] mb-1.5">
                 Address <span className="text-[#FF4D7D]">*</span>
@@ -356,11 +354,10 @@ function BookingForm({ plumber, onClose, onConfirm }) {
                   value={form.address}
                   onChange={handleChange("address")}
                   placeholder="Street, area, city"
-                  className={`w-full pl-9 pr-3 py-2.5 text-sm border rounded-xl focus:outline-none focus:ring-1 transition placeholder:text-gray-300 ${
-                    errors.address
+                  className={`w-full pl-9 pr-3 py-2.5 text-sm border rounded-xl focus:outline-none focus:ring-1 transition placeholder:text-gray-300 ${errors.address
                       ? "border-red-300 focus:border-red-400 focus:ring-red-100 bg-red-50/40"
                       : "border-gray-200 focus:border-[#FF4D7D] focus:ring-pink-200"
-                  }`}
+                    }`}
                 />
               </div>
               {errors.address && (
@@ -383,7 +380,7 @@ function BookingForm({ plumber, onClose, onConfirm }) {
               )}
             </div>
 
-            
+
             <div className="grid grid-cols-2 gap-3">
               <div style={shakeStyle("date")}>
                 <label className="block text-xs font-semibold text-[#1E3A5F] mb-1.5">
@@ -409,11 +406,10 @@ function BookingForm({ plumber, onClose, onConfirm }) {
                     type="date"
                     value={form.date}
                     onChange={handleChange("date")}
-                    className={`w-full pl-9 pr-2 py-2.5 text-xs border rounded-xl focus:outline-none focus:ring-1 transition text-gray-500 ${
-                      errors.date
+                    className={`w-full pl-9 pr-2 py-2.5 text-xs border rounded-xl focus:outline-none focus:ring-1 transition text-gray-500 ${errors.date
                         ? "border-red-300 focus:border-red-400 focus:ring-red-100 bg-red-50/40"
                         : "border-gray-200 focus:border-[#FF4D7D] focus:ring-pink-200"
-                    }`}
+                      }`}
                   />
                 </div>
                 {errors.date && (
@@ -458,7 +454,7 @@ function BookingForm({ plumber, onClose, onConfirm }) {
               </div>
             </div>
 
-           
+
             <div>
               <label className="block text-xs font-semibold text-[#1E3A5F] mb-1.5">
                 Problem description

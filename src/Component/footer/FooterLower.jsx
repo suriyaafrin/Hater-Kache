@@ -1,5 +1,6 @@
-import React from 'react'
-import { ShieldIcon, LockIcon, CheckCircleIcon, trustItems, socials, payments, bottomLinks} from "../../Data/data.jsx";
+import React from 'react';
+import { bottomLinks, payments, socials, trustItems } from '../../../data/data';
+
 
 
 function FooterLower() {

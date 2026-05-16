@@ -1,7 +1,6 @@
-import React from 'react'
 
 function StarRating({ rating, size = "sm" }) {
-  const full = Math.floor(rating);
+  const full = Math?.floor(rating);
   const half = rating - full >= 0.5;
   const cls = size === "lg" ? "w-5 h-5" : "w-3.5 h-3.5";
 
@@ -33,7 +32,7 @@ function StarRating({ rating, size = "sm" }) {
         </svg>
       )}
       <span className={`ml-1 ${size === "lg" ? "text-sm" : "text-xs"} text-gray-500`}>
-        {rating.toFixed(1)}
+        {rating?.toFixed(1)}
       </span>
     </span>
   );

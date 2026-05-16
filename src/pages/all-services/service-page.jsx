@@ -1,11 +1,17 @@
-import React, { useState } from "react";
-import { services } from "../../Data/data.jsx";
+import { useState } from "react";
+import { services } from "../../../data/data";
+import { useNavigate } from "react-router-dom";
 
-function ServiceHiro() {
+function AllServices() {
   const [service, setService] = useState("");
 
+  const navigate = useNavigate();
+  const handleService = (e) => {
+    setService(e.target.value);
+    navigate(`/services/${e.target.value.toLowerCase()}`);
+  }
   return (
-    <section className="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row items-start gap-10">
+    <section className="min-h-screen mx-auto container max-w-screen-xl px-20 py-10 flex flex-col md:flex-row items-start gap-10">
       <div className="flex-1 space-y-6">
         <div>
           <h1 className="text-5xl font-extrabold text-[#1E3A5F] leading-tight">
@@ -37,12 +43,14 @@ function ServiceHiro() {
                 strokeLinejoin="round"
               />
             </svg>
-            <input
-              className="bg-transparent text-sm text-gray-700 w-full outline-none placeholder-gray-400"
-              value={service}
-              onChange={(e) => setService(e.target.value)}
-              placeholder="Enter A Service"
-            />
+
+            <select className="w-full cursor-pointer border-none! outline-none! ring-0! focus:ring-0! focus:border-none! shadow-none" onChange={handleService}>
+              {services.map((s) => (
+                <option key={s.label} value={s.label}>
+                  {s.label}
+                </option>
+              ))}
+            </select>
           </div>
 
           <button className="px-5 py-2 rounded-xl bg-[#FF4D7D] text-white text-sm font-semibold hover:bg-[#e63d6d] transition-colors shrink-0">
@@ -54,4 +62,4 @@ function ServiceHiro() {
   );
 }
 
-export default ServiceHiro;
+export default AllServices;

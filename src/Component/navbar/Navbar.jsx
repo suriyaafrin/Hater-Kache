@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const navLinks = [
-  { label: "Home", href: "#", active: true },
-  { label: "Location", href: "#location" },
-  { label: "Services", href: "#services" },
-  { label: "Review", href: "#review" },
+  { label: "Home", href: "/", active: true },
+  { label: "Location", href: "/location" },
+  { label: "Services", href: "/services" },
+  { label: "Review", href: "/review" },
 ];
 
 export default function Navbar() {
@@ -38,14 +39,14 @@ export default function Navbar() {
           <ul className="hidden md:flex items-center gap-9 list-none m-0 p-0">
             {navLinks.map(({ label, href, active }) => (
               <li key={label}>
-                <a href={href}
+                <Link to={href}
                   className={`text-lg font-bold tracking-wide no-underline pb-0.5 border-b-2 transition-colors duration-200 ${
                     active
                       ? "text-[#FF4D7D] border-[#FF4D7D]"
                       : "text-[#1E3A5F] border-transparent hover:text-[#FF4D7D] hover:border-[#FF4D7D]"
                   }`}>
                   {label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

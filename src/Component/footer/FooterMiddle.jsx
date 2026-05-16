@@ -1,11 +1,6 @@
-import React, { useState } from "react";
-import {
-  quickLinks,
-  popularServicess,
-  forCustomers,
-  forTechnicians,
-  LinkColumn,
-} from "../../Data/data.jsx";
+import { useState } from "react";
+import { quickLinks,popularServicess,forCustomers,forTechnicians, LinkColumn } from "../../../data/data";
+
 
 function FooterMiddle() {
   const [email, setEmail] = useState("");

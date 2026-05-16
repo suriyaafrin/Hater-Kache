@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
-import { badges, services, plumbers } from "../../Data/PlumberData.jsx";
-import PlumberCard from "./PlumberCard.jsx";
-import StarRating from "./PlumberRating.jsx";
-import InfoRow from "./InfoRow.jsx";
+import { useEffect, useRef, useState } from "react";
+import { badges, plumbers, services } from "../../data/PlumberData.jsx";
 import PlumberDetail from "./PlumberDetail.jsx";
 import ResultsPanel from "./ResultsPanel.jsx";
+import { Link } from "react-router-dom";
 
-function PlumbingHero() {
+function PlumbingHero({ serviceName }) {
   const [selected, setSelected] = useState(services[0]);
   const [open, setOpen] = useState(false);
   const [location, setLocation] = useState("");
@@ -14,7 +12,7 @@ function PlumbingHero() {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searched, setSearched] = useState(false);
-  const [query, setQuery] = useState({ location: "", service: "" });
+  const [query, setQuery] = useState({ location: "", service: serviceName || services[0] });
 
   const [selectedPlumber, setSelectedPlumber] = useState(null);
 
@@ -75,16 +73,16 @@ function PlumbingHero() {
 
         <div className="max-w-6xl mx-auto px-6 pt-6">
           <nav className="flex items-center gap-2 text-sm text-gray-400">
-            <span className="hover:text-[#1E3A5F] cursor-pointer transition-colors">
+            <Link className="hover:text-[#1E3A5F] cursor-pointer transition-colors">
               Home
-            </span>
+            </Link>
             <span className="text-gray-300">›</span>
-            <span className="hover:text-[#1E3A5F] cursor-pointer transition-colors">
+            <Link to="/services" className="hover:text-[#1E3A5F] cursor-pointer transition-colors" >
               Services
-            </span>
+            </Link>
             <span className="text-gray-300">›</span>
             <span className="hover:text-[#1E3A5F] cursor-pointer transition-colors">
-              Plumbing
+              {serviceName || "All Services"}
             </span>
           </nav>
         </div>
@@ -92,7 +90,7 @@ function PlumbingHero() {
           <div className="flex-1 space-y-6">
             <div>
               <h1 className="text-5xl font-extrabold text-[#1E3A5F] leading-tight">
-                Plumbing <span className="text-[#FF4D7D]">Services</span>
+                {serviceName} <span className="text-[#FF4D7D]">Services</span>
               </h1>
               <p className="mt-4 text-lg  text-gray-500 max-w-md leading-relaxed ">
                 Find professional plumbers for all your home and office plumbing
@@ -199,11 +197,10 @@ function PlumbingHero() {
                           setSelected(s);
                           setOpen(false);
                         }}
-                        className={`px-4 py-2.5 cursor-pointer transition-colors hover:bg-blue-50 hover:text-blue-600 ${
-                          selected === s
-                            ? "bg-blue-50 text-[#1E3A5F] font-medium"
-                            : "text-gray-700"
-                        }`}
+                        className={`px-4 py-2.5 cursor-pointer transition-colors hover:bg-blue-50 hover:text-blue-600 ${selected === s
+                          ? "bg-blue-50 text-[#1E3A5F] font-medium"
+                          : "text-gray-700"
+                          }`}
                       >
                         {s}
                       </li>
