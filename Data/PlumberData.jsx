@@ -10,7 +10,6 @@ export const services = [
   "Emergency Repair",
 ];
 
-// ─── Trust Badges ─────────────────────────────────────────────────────────────
 export const badges = [
   {
     label: "Verified Pros",
@@ -198,8 +197,6 @@ export const fieldLabels = {
   date: "Date",
 };
 
-// Keyframes injected once via a <style> tag — only the @keyframe definitions,
-// no class rules. All animation application is done via inline `style` props.
 export const keyframeStyles = `
   @keyframes shake {
     0%, 100% { transform: translateX(0); }
