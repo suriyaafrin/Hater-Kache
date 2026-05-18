@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { services } from "../../../data/data";
-
+import { useNavigate } from "react-router-dom";
 
 const CARD_WIDTH = 132;
 const VISIBLE = 4;
 
 function Popular() {
+  const navigate = useNavigate();
   const [current, setCurrent] = useState(0);
   const trackRef = useRef(null);
   const maxIndex = services.length - VISIBLE;
@@ -60,6 +61,7 @@ function Popular() {
             <div
               key={service.label}
               className="flex-none w-50 flex flex-col items-center text-center gap-2 p-4 rounded-2xl bg-[#FFF1F5] border border-gray-100 hover:border-gray-300 transition-colors cursor-pointer"
+              onClick={() => navigate(`/services/${service.label.toLowerCase().replace(/\s+/g, '-')}`)}
             >
               <div
                 className={`w-13 h-13 rounded-full flex items-center justify-center ${service.bg}`}
