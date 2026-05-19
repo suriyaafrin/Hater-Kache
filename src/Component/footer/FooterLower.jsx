@@ -2,7 +2,6 @@ import React from 'react';
 import { bottomLinks, payments, socials, trustItems } from '../../../data/data';
 
 
-
 function FooterLower() {
   return (
     <div className="bg-[#0f1628] text-[#c8cfe0]">

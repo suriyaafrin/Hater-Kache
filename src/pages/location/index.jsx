@@ -6,8 +6,8 @@ export default function Location() {
       </div>
       <div>
         <svg
-          width="60"
-          height="80"
+          width="20"
+          height="20"
           viewBox="0 0 60 80"
           xmlns="http://www.w3.org/2000/svg"
         >

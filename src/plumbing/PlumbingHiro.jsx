@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { badges, plumbers, services } from "../../data/PlumberData.jsx";
 import PlumberDetail from "./PlumberDetail.jsx";
 import ResultsPanel from "./ResultsPanel.jsx";
 import { Link } from "react-router-dom";
+import { badges,plumbers,services } from "../../data/all-Data/PlumberData.jsx";
 
 const capitalize = (str) =>
   str
