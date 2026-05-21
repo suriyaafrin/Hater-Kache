@@ -1,5 +1,4 @@
-import { useParams } from "react-router-dom"
-import ServiceDetails from "../../../plumbing";
+import { useParams } from "react-router-dom";
 import PlumbingHero from "../../../plumbing/PlumbingHiro";
 
 export default function Service() {

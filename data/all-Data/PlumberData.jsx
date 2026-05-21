@@ -1,13 +1,37 @@
 // ─── Services ────────────────────────────────────────────────────────────────
-export const services = [
-  "All Services",
-  "Leak Repair",
-  "Pipe Installation",
-  "Drain Cleaning",
-  "Water Heater",
-  "Bathroom Fitting",
-  "Kitchen Plumbing",
-  "Emergency Repair",
+export const plumbersServices = [
+  {
+    id: 1,
+    label: "All Services",
+  },
+  {
+    id: 2,
+    label: "Leak Repair",
+  },
+  {
+    id: 3,
+    label: "Pipe Installation",
+  },
+  {
+    id: 4,
+    label: "Drain Cleaning",
+  },
+  {
+    id: 5,
+    label: "Water Heater",
+  },
+  {
+    id: 6,
+    label: "Bathroom Fitting",
+  },
+  {
+    id: 7,
+    label: "Kitchen Plumbing",
+  },
+  {
+    id: 8,
+    label: "Emergency Repair",
+  },
 ];
 
 export const badges = [

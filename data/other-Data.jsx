@@ -1,29 +1,8 @@
 import { BsShieldLock } from 'react-icons/bs'
 import {
-  FaBolt,
-  FaBroom,
   FaCheckCircle,
-  FaCouch,
-  FaFaucet,
-  FaHammer,
-  FaKey,
-  FaLeaf,
-  FaLock,
-  FaPaintRoller,
-  FaTrash,
-  FaTruck,
-  FaWrench
+  FaLock
 } from 'react-icons/fa'
-import {
-  MdAcUnit,
-  MdBugReport,
-  MdOutlineIron,
-  MdOutlineLocalLaundryService,
-  MdOutlinePets,
-  MdOutlineRoofing,
-  MdOutlineWaterDrop,
-  MdVideocam
-} from 'react-icons/md'
 
 export const trustItems = [
   {
