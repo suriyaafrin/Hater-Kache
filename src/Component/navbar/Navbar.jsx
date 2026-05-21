@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { CloseIcon, HamburgerIcon } from "../../img_folder/img";
 
 const navLinks = [
   { label: "Home", href: "/", active: true },
@@ -59,12 +60,7 @@ export default function Navbar() {
           
           <button onClick={() => setMenuOpen(o => !o)} aria-label="Toggle menu"
             className="flex md:hidden p-2 rounded-lg hover:bg-[#FFD6E0] transition-colors">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
+            <HamburgerIcon/>
           </button>
 
         </div>
@@ -84,11 +80,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between px-6 py-5 border-b border-[#FFD6E0]">
           <a href="#" onClick={close}><img src="/Web_Logo.png" alt="Logo" className="h-10 w-auto" /></a>
           <button onClick={close} className="p-2 rounded-lg hover:bg-[#FFD6E0] transition-colors">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
+            <CloseIcon/>
           </button>
         </div>
 

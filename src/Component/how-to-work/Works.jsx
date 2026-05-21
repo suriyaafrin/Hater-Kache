@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { steps } from '../../../data/data';
+import { steps } from '../../../data/other-Data';
 
 
 function Works() {

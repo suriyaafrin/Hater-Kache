@@ -1,7 +1,28 @@
 import { useState } from "react";
-import { quickLinks,popularServicess,forCustomers,forTechnicians, LinkColumn } from "../../../data/data";
+import { SendIcon } from "../../img_folder/img";
 
-
+const bottomLinks = ["Privacy Policy", "Terms & Conditions", "Refund Policy"]
+const quickLinks = ["Home", "Services", "Technicians", "How It Works", "About Us", "Blog", "Contact Us"]
+const popularServicess = ["Plumbing", "Electrical", "Appliance Repair", "Painting", "Carpentry", "AC Repair", "Window Cleaning"]
+const forCustomers = ["How It Works", "Book a Service", "Track Your Booking", "Service Areas", "Pricing", "FAQs", "Support"]
+const forTechnicians = ["Become a Technician", "Technician Login", "How It Works", "Earnings", "Resources", "Help Center"]
+const LinkColumn = ({ title, links }) => (
+  <div className="px-4 py-6 ">
+    <h4 className="text-white text-sm font-semibold mb-5 tracking-wider uppercase">{title}</h4>
+    <ul className="space-y-3">
+      {links.map((link) => (
+        <li key={link}>
+          <a
+            href="#"
+            className="text-slate-400 text-[13px] leading-relaxed hover:text-pink-400 transition-colors duration-150 block py-0.5"
+          >
+            {link}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
 function FooterMiddle() {
   const [email, setEmail] = useState("");
 
@@ -11,6 +32,7 @@ function FooterMiddle() {
       <LinkColumn title="Popular Services" links={popularServicess} />
       <LinkColumn title="For Customers" links={forCustomers} />
       <LinkColumn title="For Technicians" links={forTechnicians} />
+      
 
       <div className="col-span-2 sm:col-span-1 px-4 py-6">
         <h4 className="text-white text-sm font-semibold mb-5 tracking-wider uppercase">
@@ -28,19 +50,7 @@ function FooterMiddle() {
         />
         <button className="w-full bg-[#FF4D7D] hover:bg-pink-600 active:scale-[0.98] transition-all text-white text-[12.5px] font-semibold py-2.5 px-4 rounded-md flex items-center justify-center gap-2">
           <span>Subscribe</span>
-          <svg
-            className="w-3.5 h-3.5"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-            />
-          </svg>
+          <SendIcon/>
         </button>
       </div>
     </div>

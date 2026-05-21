@@ -1,12 +1,12 @@
 import React from 'react';
-import { bottomLinks, payments, socials, trustItems } from '../../../data/data';
+import { trustItems, bottomLinks, payments, socials} from '../../../data/other-Data';
 
 
 function FooterLower() {
   return (
     <div className="bg-[#0f1628] text-[#c8cfe0]">
 
-      {/* Trust bar */}
+     
       <div className="max-w-7xl mx-auto px-8 py-7 border-t border-[#1e2d4a] flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
 
         <div className="flex flex-col sm:flex-row gap-6 flex-1">
@@ -23,7 +23,6 @@ function FooterLower() {
           ))}
         </div>
 
-        {/* Social icons */}
         <div className="flex gap-2 shrink-0">
           {socials.map(({ label, bg, content }) => (
             <a
@@ -38,7 +37,7 @@ function FooterLower() {
         </div>
       </div>
 
-      {/* Bottom bar */}
+      
       <div className="max-w-7xl mx-auto px-8 border-t border-[#1e2d4a]">
         <div className="flex flex-col sm:flex-row items-center justify-between py-4 gap-3 flex-wrap">
 

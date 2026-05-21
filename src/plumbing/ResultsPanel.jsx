@@ -1,5 +1,6 @@
 import React from 'react'
 import PlumberCard from './PlumberCard';
+import { LargeSearchIcon } from '../img_folder/img';
 function ResultsPanel({
   results,
   loading,
@@ -29,16 +30,7 @@ function ResultsPanel({
     return (
       <div className="mt-6 max-w-xl bg-white border border-gray-100 rounded-2xl px-6 py-8 text-center">
         <div className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center mx-auto mb-3">
-          <svg
-            viewBox="0 0 24 24"
-            className="w-6 h-6 text-gray-300"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={1.5}
-          >
-            <circle cx="11" cy="11" r="8" />
-            <path d="M21 21l-4.35-4.35" strokeLinecap="round" />
-          </svg>
+          <LargeSearchIcon />
         </div>
         <p className="text-sm font-medium text-gray-500">No plumbers found</p>
         <p className="text-xs text-gray-400 mt-1">

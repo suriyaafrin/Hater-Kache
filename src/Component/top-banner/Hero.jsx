@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { SearchIcon } from "../../img_folder/img";
 
 const trustBadges = [
   { icon: "✅", label: "Verified Pros", sub: "Background checked" },
@@ -94,11 +95,7 @@ function Hero() {
             aria-label="Search technicians by location"
             className="flex items-center bg-white rounded-full border border-gray-200 shadow-sm px-4 py-1.5 gap-3 max-w-sm"
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-              stroke="#aaa" strokeWidth="2" strokeLinecap="round" aria-hidden="true" className="shrink-0">
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
+            <SearchIcon/>
 
             <label htmlFor="location-input" className="sr-only">Enter your location</label>
             <input
