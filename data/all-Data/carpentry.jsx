@@ -1,15 +1,3 @@
-export const carpentryServices = [
-  "All Services",
-  "Furniture Repair",
-  "Custom Furniture",
-  "Door Repair",
-  "Window Repair",
-  "Cabinet Installation",
-  "Wood Polishing",
-  "Bed Assembly",
-  "Emergency Carpentry",
-];
-
 export const carpenters = [
   {
     id: 1,

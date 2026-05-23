@@ -3,11 +3,6 @@ import PlumberDetail from "./PlumberDetail.jsx";
 import ResultsPanel from "./ResultsPanel.jsx";
 import { Link } from "react-router-dom";
 import {
-  badges,
-  plumbers,
-  plumbersServices,
-} from "../../data/all-Data/PlumberData.jsx";
-import {
   ChevronDownIcon,
   PinLocationIcon,
   SearchIcon,
@@ -15,6 +10,10 @@ import {
   SmallCloseIcon,
   ToolboxIllustration,
 } from "../img_folder/img.jsx";
+import { plumbersServices } from "../../data/serviceLists.js";
+import { badges, plumbersWorkers } from "../../data/all-Data/Plumber.jsx";
+import { ServiceDropdown } from "../pages/all-services/service-dropdown/index.jsx";
+import { services } from "../../data/data.jsx";
 
 const capitalize = (str) =>
   str
@@ -22,7 +21,10 @@ const capitalize = (str) =>
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
 
-function PlumbingHero({ serviceName }) {
+function PlumbingHero({ slug }) {
+  const filteredServices = slug
+    ? services.find((service) => service.slug === slug).slugData.serviceList
+    : services;
   const [selected, setSelected] = useState(plumbersServices[0]?.label);
   const [open, setOpen] = useState(false);
   const [location, setLocation] = useState("");
@@ -32,14 +34,14 @@ function PlumbingHero({ serviceName }) {
   const [searched, setSearched] = useState(false);
   const [query, setQuery] = useState({
     location: "",
-    service: serviceName || plumbersServices[0],
+    service: slug || plumbersServices[0],
   });
 
   const [selectedPlumber, setSelectedPlumber] = useState(null);
 
   const ddRef = useRef(null);
 
-  const displayName = serviceName ? capitalize(serviceName) : "All Services";
+  const displayName = slug ? capitalize(slug) : "All Services";
 
   useEffect(() => {
     const handler = (e) => {
@@ -49,17 +51,18 @@ function PlumbingHero({ serviceName }) {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  const handleSearch = () => {
+  const handleServiceChange = (e) => {
     const loc = location.trim().toLowerCase();
     const svc = selected;
 
     setLoading(true);
     setSearched(true);
+    setSelected(e.target.value);
     setSelectedPlumber(null);
     setQuery({ location: location.trim() || "Anywhere", service: svc });
 
     setTimeout(() => {
-      const filtered = plumbers.filter((p) => {
+      const filtered = plumbersWorkers.filter((p) => {
         const matchLoc =
           !loc ||
           p.areas.some(
@@ -81,7 +84,7 @@ function PlumbingHero({ serviceName }) {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") handleSearch();
+    if (e.key === "Enter") handleServiceChange();
   };
 
   return (
@@ -146,46 +149,18 @@ function PlumbingHero({ serviceName }) {
                 )}
               </div>
 
-              <div className="relative" ref={ddRef}>
-                <button
-                  onClick={() => setOpen(!open)}
-                  className="flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 hover:border-[#FF4D7D] transition-colors whitespace-nowrap w-full sm:w-auto"
-                  aria-haspopup="listbox"
-                  aria-expanded={open}
-                >
-                  <SearchIcon />
-                  <span className="flex-1 text-left">{selected}</span>
-                  <ChevronDownIcon />
-                </button>
-                {open && (
-                  <ul
-                    role="listbox"
-                    className="absolute z-20 mt-1 w-52 bg-white border border-gray-200 rounded-xl shadow-xl overflow-hidden text-sm"
-                  >
-                    {plumbersServices.map((s) => (
-                      <li
-                        key={s.id}
-                        role="option"
-                        aria-selected={selected === s.label}
-                        onClick={() => {
-                          setSelected(s.label);
-                          setOpen(false);
-                        }}
-                        className={`px-4 py-2.5 cursor-pointer transition-colors hover:bg-blue-50 hover:text-blue-600 ${
-                          selected === s.label
-                            ? "bg-blue-50 text-[#1E3A5F] font-medium"
-                            : "text-gray-700"
-                        }`}
-                      >
-                        {s.label}
-                      </li>
-                    ))}
-                  </ul>
-                )}
+              <div className="flex item-center gap-2 flex-1 px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 focus-within:border-[#FF4D7D] transition-colors">
+                {" "}
+                <SearchIcon />
+                <ServiceDropdown
+                  dropDownData={filteredServices}
+                  onChange={(e) => handleServiceChange(e)}
+                  value={selected}
+                />
               </div>
 
               <button
-                onClick={handleSearch}
+                onClick={handleServiceChange}
                 className="px-6 py-2.5 bg-[#FF4D7D] hover:bg-[#ac143d] active:scale-95 text-white text-sm font-semibold rounded-xl transition-all shadow-md shadow-red-200 flex items-center gap-2"
               >
                 <SearchOutlineIcon />

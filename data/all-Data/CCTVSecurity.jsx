@@ -1,15 +1,4 @@
-export const cctvServices = [
-  "All Services",
-  "CCTV Installation",
-  "Security Camera Repair",
-  "IP Camera Setup",
-  "WiFi Camera Setup",
-  "DVR/NVR Setup",
-  "Home Security System",
-  "Office Security Setup",
-  "Motion Sensor Installation",
-  "Smart Doorbell Setup",
-];
+
 
 export const cctvSecurityWorkers = [
   {

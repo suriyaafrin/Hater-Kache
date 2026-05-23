@@ -1,11 +1,12 @@
 import { useParams } from "react-router-dom";
-import PlumbingHero from "../../../plumbing/PlumbingHiro";
+import PlumbingHero from "../../../plumbing/PlumbingHero";
+
 
 export default function Service() {
-    const { serviceId } = useParams();
+    const { slug } = useParams();
     return (
         <div>
-            <PlumbingHero serviceName={serviceId} />
+            <PlumbingHero slug={slug} />
         </div>
     )
 }

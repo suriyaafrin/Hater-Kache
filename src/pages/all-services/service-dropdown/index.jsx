@@ -13,7 +13,7 @@ export function ServiceDropdown({ dropDownData, onChange, value }) {
         {dropDownData.map((service) => (
           <option
             key={service.id}
-            value={service.slug}
+            value={service.slug||service.id}
           >
             {service.label}
           </option>

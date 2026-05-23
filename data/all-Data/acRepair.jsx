@@ -1,14 +1,4 @@
-export const acRepairServices = [
-  "All Services",
-  "AC Installation",
-  "AC Gas Refill",
-  "AC Cleaning",
-  "AC Water Leakage Fix",
-  "Compressor Repair",
-  "AC PCB Repair",
-  "AC Maintenance",
-  "Emergency AC Repair",
-];
+
 
 export const acRepairTechnicians = [
   {

@@ -1,15 +1,4 @@
-export const gardeningServices = [
-  "All Services",
-  "Garden Cleaning",
-  "Lawn Mowing",
-  "Plant Watering",
-  "Tree Trimming",
-  "Flower Planting",
-  "Landscape Design",
-  "Garden Maintenance",
-  "Rooftop Gardening",
-  "Indoor Plant Care",
-];
+
 
 export const gardeningWorkers = [
   {

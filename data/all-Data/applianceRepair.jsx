@@ -1,14 +1,4 @@
-export const applianceRepairServices = [
-  "All Services",
-  "Refrigerator Repair",
-  "Washing Machine Repair",
-  "Microwave Repair",
-  "Air Conditioner Repair",
-  "TV Repair",
-  "Oven Repair",
-  "Water Purifier Repair",
-  "Emergency Appliance Repair",
-];
+
 
 export const applianceRepairTechnicians = [
   {

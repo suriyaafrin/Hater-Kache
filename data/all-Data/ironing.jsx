@@ -1,15 +1,4 @@
-export const ironingServices = [
-  "All Services",
-  "Clothes Ironing",
-  "Steam Iron Service",
-  "Express Ironing",
-  "Shirt Ironing",
-  "Pant Ironing",
-  "Saree Ironing",
-  "Curtain Ironing",
-  "Home Pickup Ironing",
-  "Office Uniform Ironing",
-];
+
 
 export const ironingWorkers = [
   {

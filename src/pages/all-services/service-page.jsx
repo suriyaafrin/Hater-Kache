@@ -13,13 +13,19 @@ function AllServices() {
   const handleService = (slug) => {
     navigate(`/services/${slug}`);
   };
-const filteredServices = slug
-  ? services.filter((service) => service.slug !== slug)
-  : services;
+
+  
+  const filteredServices = slug
+    ? services.find((service) => service.slug === slug).slugData.serviceList
+    : services;
+
+  console.log(filteredServices, "filteredServices");
   return (
     <>
-      <section className="mx-auto container max-w-7xl px-20 py-10
-                        flex flex-col md:flex-row items-start gap-10">
+      <section
+        className="mx-auto container max-w-7xl px-20 py-10
+                        flex flex-col md:flex-row items-start gap-10"
+      >
         <div className="flex-1 space-y-6">
           <div>
             <h1 className="text-5xl font-extrabold text-[#1E3A5F] leading-tight">
@@ -31,11 +37,15 @@ const filteredServices = slug
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 bg-white shadow-lg
-                        rounded-2xl p-2 border border-gray-100 max-w-xl">
-            <div className="flex items-center gap-2 flex-1 px-3 py-2 rounded-xl
+          <div
+            className="flex flex-col sm:flex-row gap-3 bg-white shadow-lg
+                        rounded-2xl p-2 border border-gray-100 max-w-xl"
+          >
+            <div
+              className="flex items-center gap-2 flex-1 px-3 py-2 rounded-xl
                           bg-gray-50 border border-gray-200
-                          focus-within:border-[#FF4D7D] transition-colors">
+                          focus-within:border-[#FF4D7D] transition-colors"
+            >
               <SettingsIcon />
               <ServiceDropdown
                 dropDownData={filteredServices}
@@ -49,7 +59,6 @@ const filteredServices = slug
           <div className="absolute inset-0 rounded-full bg-linear-to-br  scale-90 opacity-80" />
           <ToolboxIcon />
         </div>
-
       </section>
 
       <div className="w-full">
@@ -57,7 +66,6 @@ const filteredServices = slug
       </div>
     </>
   );
-
 }
 
 export default AllServices;

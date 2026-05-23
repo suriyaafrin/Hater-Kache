@@ -1,14 +1,3 @@
-export const homeSecurityServices = [
-  "All Services",
-  "CCTV Installation",
-  "Alarm System Setup",
-  "Smart Door Lock",
-  "Security Guard Service",
-  "Intercom Installation",
-  "Motion Sensor Setup",
-  "Video Door Phone",
-  "Home Security Audit",
-];
 
 export const homeSecurityProviders = [
   {

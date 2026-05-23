@@ -1,14 +1,3 @@
-export const deepCleaningServices = [
-  "All Services",
-  "Home Deep Cleaning",
-  "Office Deep Cleaning",
-  "Bathroom Cleaning",
-  "Kitchen Deep Cleaning",
-  "Sofa & Carpet Cleaning",
-  "Window Cleaning",
-  "Post-Construction Cleaning",
-  "Emergency Cleaning Service",
-];
 
 export const deepCleaners = [
   {

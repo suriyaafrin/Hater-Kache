@@ -1,14 +1,4 @@
-export const electricalServices = [
-  "All Services",
-  "Wiring Installation",
-  "Circuit Repair",
-  "Fan Installation",
-  "Light Installation",
-  "Switch & Socket Repair",
-  "Generator Connection",
-  "AC Line Setup",
-  "Emergency Electrical Repair",
-];
+
 export const electricians = [
   {
     id: 1,

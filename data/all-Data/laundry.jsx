@@ -1,15 +1,3 @@
-export const laundryServices = [
-  "All Services",
-  "Wash & Fold",
-  "Dry Cleaning",
-  "Ironing Service",
-  "Blanket Cleaning",
-  "Curtain Cleaning",
-  "Shoe Cleaning",
-  "Express Laundry",
-  "Home Pickup Laundry",
-  "Office Laundry Service",
-];
 
 export const laundryWorkers = [
   {
