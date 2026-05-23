@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const CARD_WIDTH = 132;
 const VISIBLE = 4;
 
-function Popular() {
+function Popular({ serviceList = [], technicians = [] }) {
   const navigate = useNavigate();
   const [current, setCurrent] = useState(0);
   const trackRef = useRef(null);

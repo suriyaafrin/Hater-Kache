@@ -1,4 +1,4 @@
-export const services = [
+export const roofingServices = [
   "All Services",
   "Roof Installation",
   "Roof Repair",

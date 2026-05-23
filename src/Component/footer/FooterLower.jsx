@@ -1,14 +1,15 @@
-import React from 'react';
-import { trustItems, bottomLinks, payments, socials} from '../../../data/other-Data';
-
+import React from "react";
+import {
+  trustItems,
+  bottomLinks,
+  payments,
+  socials,
+} from "../../../data/other-Data";
 
 function FooterLower() {
   return (
     <div className="bg-[#0f1628] text-[#c8cfe0]">
-
-     
       <div className="max-w-7xl mx-auto px-8 py-7 border-t border-[#1e2d4a] flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-
         <div className="flex flex-col sm:flex-row gap-6 flex-1">
           {trustItems.map(({ icon, title, desc }) => (
             <div key={title} className="flex items-start gap-3 max-w-55 ">
@@ -16,8 +17,12 @@ function FooterLower() {
                 {icon}
               </div>
               <div>
-                <h5 className="text-white text-[13px] font-semibold mb-1">{title}</h5>
-                <p className="text-[#8a96b0] text-[12px] leading-relaxed">{desc}</p>
+                <h5 className="text-white text-[13px] font-semibold mb-1">
+                  {title}
+                </h5>
+                <p className="text-[#8a96b0] text-[12px] leading-relaxed">
+                  {desc}
+                </p>
               </div>
             </div>
           ))}
@@ -37,24 +42,26 @@ function FooterLower() {
         </div>
       </div>
 
-      
       <div className="max-w-7xl mx-auto px-8 border-t border-[#1e2d4a]">
         <div className="flex flex-col sm:flex-row items-center justify-between py-4 gap-3 flex-wrap">
-
           <p className="text-[#8a96b0] text-[12px]">
             © 2024 Fixora. All rights reserved.
           </p>
 
           <div className="flex items-center gap-4">
             {bottomLinks.map((link, i) => (
-              <React.Fragment key={link}>
-                <a href="#" className="text-[#8a96b0] text-[12px] hover:text-white transition-colors">
+              <div key={link} className="flex items-center gap-4">
+                <a
+                  href="#"
+                  className="text-[#8a96b0] text-[12px] hover:text-white transition-colors"
+                >
                   {link}
                 </a>
+
                 {i < bottomLinks.length - 1 && (
                   <span className="text-[#2a3555]">|</span>
                 )}
-              </React.Fragment>
+              </div>
             ))}
           </div>
 
@@ -71,12 +78,10 @@ function FooterLower() {
               ))}
             </div>
           </div>
-
         </div>
       </div>
-
     </div>
-  )
+  );
 }
 
-export default FooterLower
+export default FooterLower;

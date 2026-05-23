@@ -1,4 +1,4 @@
-export const services = [
+export const pestControlServices = [
   "All Services",
   "Cockroach Control",
   "Termite Treatment",

@@ -1,4 +1,4 @@
-export const services = [
+export const petCareServices = [
   "All Services",
   "Pet Grooming",
   "Pet Walking",

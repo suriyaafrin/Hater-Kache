@@ -1,4 +1,4 @@
-export const services = [
+export const movingShiftingServices = [
   "All Services",
   "House Moving",
   "Office Relocation",

@@ -1,4 +1,4 @@
-export const services = [
+export const homeSecurityServices = [
   "All Services",
   "CCTV Installation",
   "Alarm System Setup",

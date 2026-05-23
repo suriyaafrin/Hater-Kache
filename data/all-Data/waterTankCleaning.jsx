@@ -1,4 +1,4 @@
-export const services = [
+export const waterTankCleaningServices = [
   "All Services",
   "Underground Tank Cleaning",
   "Overhead Tank Cleaning",

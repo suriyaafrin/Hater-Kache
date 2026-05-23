@@ -1,4 +1,4 @@
-export const services = [
+export const laundryServices = [
   "All Services",
   "Wash & Fold",
   "Dry Cleaning",

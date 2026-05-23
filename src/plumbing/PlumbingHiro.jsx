@@ -2,8 +2,19 @@ import { useEffect, useRef, useState } from "react";
 import PlumberDetail from "./PlumberDetail.jsx";
 import ResultsPanel from "./ResultsPanel.jsx";
 import { Link } from "react-router-dom";
-import { badges,plumbers,services } from "../../data/all-Data/PlumberData.jsx";
-import { ChevronDownIcon, PinLocationIcon, SearchIcon, SearchOutlineIcon, SmallCloseIcon, ToolboxIllustration } from "../img_folder/img.jsx";
+import {
+  badges,
+  plumbers,
+  plumbersServices,
+} from "../../data/all-Data/PlumberData.jsx";
+import {
+  ChevronDownIcon,
+  PinLocationIcon,
+  SearchIcon,
+  SearchOutlineIcon,
+  SmallCloseIcon,
+  ToolboxIllustration,
+} from "../img_folder/img.jsx";
 
 const capitalize = (str) =>
   str
@@ -12,7 +23,7 @@ const capitalize = (str) =>
     .join(" ");
 
 function PlumbingHero({ serviceName }) {
-  const [selected, setSelected] = useState(services[0]);
+  const [selected, setSelected] = useState(plumbersServices[0]?.label);
   const [open, setOpen] = useState(false);
   const [location, setLocation] = useState("");
 
@@ -21,7 +32,7 @@ function PlumbingHero({ serviceName }) {
   const [searched, setSearched] = useState(false);
   const [query, setQuery] = useState({
     location: "",
-    service: serviceName || services[0],
+    service: serviceName || plumbersServices[0],
   });
 
   const [selectedPlumber, setSelectedPlumber] = useState(null);
@@ -151,18 +162,22 @@ function PlumbingHero({ serviceName }) {
                     role="listbox"
                     className="absolute z-20 mt-1 w-52 bg-white border border-gray-200 rounded-xl shadow-xl overflow-hidden text-sm"
                   >
-                    {services.map((s) => (
+                    {plumbersServices.map((s) => (
                       <li
-                        key={s}
+                        key={s.id}
                         role="option"
-                        aria-selected={selected === s}
+                        aria-selected={selected === s.label}
                         onClick={() => {
-                          setSelected(s);
+                          setSelected(s.label);
                           setOpen(false);
                         }}
-                        className={`px-4 py-2.5 cursor-pointer transition-colors hover:bg-blue-50 hover:text-blue-600 ${selected === s ? "bg-blue-50 text-[#1E3A5F] font-medium" : "text-gray-700"}`}
+                        className={`px-4 py-2.5 cursor-pointer transition-colors hover:bg-blue-50 hover:text-blue-600 ${
+                          selected === s.label
+                            ? "bg-blue-50 text-[#1E3A5F] font-medium"
+                            : "text-gray-700"
+                        }`}
                       >
-                        {s}
+                        {s.label}
                       </li>
                     ))}
                   </ul>

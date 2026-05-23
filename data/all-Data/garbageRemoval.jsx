@@ -1,4 +1,4 @@
-export const services = [
+export const garbageRemovalServices = [
   "All Services",
   "House Waste Removal",
   "Office Garbage Pickup",
