@@ -23,7 +23,7 @@ const capitalize = (str) =>
 
 function PlumbingHero({ slug }) {
   const filteredServices = slug
-    ? services.find((service) => service.slug === slug).slugData.serviceList
+    ? services.find((service) => service.slug === slug).slugData
     : services;
   const [selected, setSelected] = useState(plumbersServices[0]?.label);
   const [open, setOpen] = useState(false);
@@ -58,7 +58,7 @@ function PlumbingHero({ slug }) {
     setLoading(true);
     setSearched(true);
     setSelected(e.target.value);
-    setSelectedPlumber(null);
+    setSelectedPlumber(slug? filteredServices.technicians:null);
     setQuery({ location: location.trim() || "Anywhere", service: svc });
 
     setTimeout(() => {
@@ -153,7 +153,7 @@ function PlumbingHero({ slug }) {
                 {" "}
                 <SearchIcon />
                 <ServiceDropdown
-                  dropDownData={filteredServices}
+                  dropDownData={filteredServices.serviceList}
                   onChange={(e) => handleServiceChange(e)}
                   value={selected}
                 />
