@@ -51,14 +51,13 @@ function PlumbingHero({ slug }) {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  const handleServiceChange = (e) => {
+  // Core search logic — safe to call from button, Enter key, or dropdown
+  const runSearch = (svc = selected) => {
     const loc = location.trim().toLowerCase();
-    const svc = selected;
 
     setLoading(true);
     setSearched(true);
-    setSelected(e.target.value);
-    setSelectedPlumber(slug? filteredServices.technicians:null);
+    setSelectedPlumber(null);
     setQuery({ location: location.trim() || "Anywhere", service: svc });
 
     setTimeout(() => {
@@ -83,8 +82,14 @@ function PlumbingHero({ slug }) {
     }, 700);
   };
 
+  // Called only from the dropdown — receives a string value directly
+  const handleServiceChange = (value) => {
+    setSelected(value);
+    runSearch(value);
+  };
+
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") handleServiceChange();
+    if (e.key === "Enter") runSearch();
   };
 
   return (
@@ -154,13 +159,13 @@ function PlumbingHero({ slug }) {
                 <SearchIcon />
                 <ServiceDropdown
                   dropDownData={filteredServices.serviceList}
-                  onChange={(e) => handleServiceChange(e)}
+                  onChange={handleServiceChange}
                   value={selected}
                 />
               </div>
 
               <button
-                onClick={handleServiceChange}
+                onClick={() => runSearch()}
                 className="px-6 py-2.5 bg-[#FF4D7D] hover:bg-[#ac143d] active:scale-95 text-white text-sm font-semibold rounded-xl transition-all shadow-md shadow-red-200 flex items-center gap-2"
               >
                 <SearchOutlineIcon />
@@ -199,6 +204,7 @@ function PlumbingHero({ slug }) {
         </section>
       </div>
     </div>
+    
   );
 }
 

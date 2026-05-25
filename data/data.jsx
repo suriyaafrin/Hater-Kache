@@ -25,6 +25,7 @@ import { ironingWorkers } from "./all-Data/ironing";
 import { laundryWorkers } from "./all-Data/laundry";
 import { plumbersWorkers } from "./all-Data/Plumber";
 import { acRepairServices, applianceRepairServices, carpentryServices, cctvServices, deepCleaningServices, electricalServices, gardeningServices, homeSecurityServices, ironingServices, laundryServices, plumbersServices } from "./serviceLists";
+import { carpenters } from "./all-Data/carpentry";
 
 export const services = [
   {
@@ -77,7 +78,7 @@ export const services = [
     slug: "carpentry",
     slugData: {
       serviceList: carpentryServices,
-      technicians: plumbersWorkers,
+      technicians: carpenters,
     },
   },
 

@@ -100,7 +100,7 @@ function PlumberDetail({ plumber, onClose }) {
                 label="Email"
                 value={
                   plumber.email ??
-                  `${plumber.name.split(" ")[0].toLowerCase()}@haterkache.com`
+                  `${plumber.name?.split(" ")[0]?.toLowerCase() ?? "contact"}@haterkache.com`
                 }
               />
 
