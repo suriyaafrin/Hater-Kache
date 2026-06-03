@@ -17,26 +17,34 @@ import { services } from "../../data/data.jsx";
 
 const capitalize = (str) =>
   str
-    .split(" ")
+    .split("-")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
 
 function PlumbingHero({ slug }) {
-  const filteredServices = slug
-    ? services.find((service) => service.slug === slug).slugData
-    : services;
-  const [selected, setSelected] = useState(plumbersServices[0]?.label);
+  // ✅ Get the matching service object for this slug
+  const currentService = slug
+    ? services.find((service) => service.slug === slug)
+    : null;
+
+  const filteredServices = currentService ? currentService.slugData : { serviceList: plumbersServices };
+
+  // ✅ Dynamic technicians — uses the correct worker array per slug
+  const workers = currentService?.slugData?.technicians ?? plumbersWorkers;
+
+  // ✅ Initialize dropdown with first label from the correct service list
+  const defaultService = filteredServices.serviceList?.[0]?.label ?? "All Services";
+
+  const [selected, setSelected] = useState(defaultService);
   const [open, setOpen] = useState(false);
   const [location, setLocation] = useState("");
-
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searched, setSearched] = useState(false);
   const [query, setQuery] = useState({
     location: "",
-    service: slug || plumbersServices[0],
+    service: defaultService,
   });
-
   const [selectedPlumber, setSelectedPlumber] = useState(null);
 
   const ddRef = useRef(null);
@@ -51,7 +59,7 @@ function PlumbingHero({ slug }) {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  // Core search logic — safe to call from button, Enter key, or dropdown
+  // ✅ Now filters from the correct workers array dynamically
   const runSearch = (svc = selected) => {
     const loc = location.trim().toLowerCase();
 
@@ -61,14 +69,17 @@ function PlumbingHero({ slug }) {
     setQuery({ location: location.trim() || "Anywhere", service: svc });
 
     setTimeout(() => {
-      const filtered = plumbersWorkers.filter((p) => {
+      const filtered = workers.filter((p) => {
         const matchLoc =
           !loc ||
           p.areas.some(
             (a) =>
-              a.toLowerCase().includes(loc) || loc.includes(a.toLowerCase()),
+              a.toLowerCase().includes(loc) || loc.includes(a.toLowerCase())
           );
-        const matchSvc = svc === "All Services" || p.service === svc;
+        // ✅ Case-insensitive match so "AC Installation" === "ac installation"
+        const matchSvc =
+          svc === "All Services" ||
+          p.service.toLowerCase() === svc.toLowerCase();
         return matchLoc && matchSvc;
       });
 
@@ -82,7 +93,6 @@ function PlumbingHero({ slug }) {
     }, 700);
   };
 
-  // Called only from the dropdown — receives a string value directly
   const handleServiceChange = (value) => {
     setSelected(value);
     runSearch(value);
@@ -128,8 +138,8 @@ function PlumbingHero({ slug }) {
                 {displayName} <span className="text-[#FF4D7D]">Services</span>
               </h1>
               <p className="mt-4 text-lg text-gray-500 max-w-md leading-relaxed">
-                Find professional plumbers for all your home and office plumbing
-                needs. Fast, reliable &amp; affordable service near you.
+                Find trusted professionals for all your {displayName.toLowerCase()} needs.
+                Fast, reliable &amp; affordable service near you.
               </p>
             </div>
 
@@ -155,7 +165,6 @@ function PlumbingHero({ slug }) {
               </div>
 
               <div className="flex item-center gap-2 flex-1 px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 focus-within:border-[#FF4D7D] transition-colors">
-                {" "}
                 <SearchIcon />
                 <ServiceDropdown
                   dropDownData={filteredServices.serviceList}
@@ -198,13 +207,12 @@ function PlumbingHero({ slug }) {
           </div>
 
           <div className="shrink-0 w-64 h-64 md:w-80 md:h-80 relative flex items-center justify-center">
-            <div className="absolute inset-0 rounded-full bg-linear-to-br  scale-90 opacity-80" />
+            <div className="absolute inset-0 rounded-full bg-linear-to-br scale-90 opacity-80" />
             <ToolboxIllustration />
           </div>
         </section>
       </div>
     </div>
-    
   );
 }
 
