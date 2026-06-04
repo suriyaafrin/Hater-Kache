@@ -22,17 +22,15 @@ const capitalize = (str) =>
     .join(" ");
 
 function PlumbingHero({ slug }) {
-  // ✅ Get the matching service object for this slug
   const currentService = slug
     ? services.find((service) => service.slug === slug)
     : null;
 
-  const filteredServices = currentService ? currentService.slugData : { serviceList: plumbersServices };
+  const filteredServices = currentService
+    ? currentService.slugData
+    : { serviceList: plumbersServices };
 
-  // ✅ Dynamic technicians — uses the correct worker array per slug
   const workers = currentService?.slugData?.technicians ?? plumbersWorkers;
-
-  // ✅ Initialize dropdown with first label from the correct service list
   const defaultService = filteredServices.serviceList?.[0]?.label ?? "All Services";
 
   const [selected, setSelected] = useState(defaultService);
@@ -48,6 +46,7 @@ function PlumbingHero({ slug }) {
   const [selectedPlumber, setSelectedPlumber] = useState(null);
 
   const ddRef = useRef(null);
+  const selectedRef = useRef(defaultService);
 
   const displayName = slug ? capitalize(slug) : "All Services";
 
@@ -59,8 +58,7 @@ function PlumbingHero({ slug }) {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  // ✅ Now filters from the correct workers array dynamically
-  const runSearch = (svc = selected) => {
+  const runSearch = (svc = selectedRef.current) => {
     const loc = location.trim().toLowerCase();
 
     setLoading(true);
@@ -76,9 +74,10 @@ function PlumbingHero({ slug }) {
             (a) =>
               a.toLowerCase().includes(loc) || loc.includes(a.toLowerCase())
           );
-        // ✅ Case-insensitive match so "AC Installation" === "ac installation"
+        const isAllServices =
+          svc === "All Services" || svc === "all-services";
         const matchSvc =
-          svc === "All Services" ||
+          isAllServices ||
           p.service.toLowerCase() === svc.toLowerCase();
         return matchLoc && matchSvc;
       });
@@ -95,6 +94,7 @@ function PlumbingHero({ slug }) {
 
   const handleServiceChange = (value) => {
     setSelected(value);
+    selectedRef.current = value;
     runSearch(value);
   };
 
@@ -138,13 +138,14 @@ function PlumbingHero({ slug }) {
                 {displayName} <span className="text-[#FF4D7D]">Services</span>
               </h1>
               <p className="mt-4 text-lg text-gray-500 max-w-md leading-relaxed">
-                Find trusted professionals for all your {displayName.toLowerCase()} needs.
-                Fast, reliable &amp; affordable service near you.
+                Find trusted professionals for all your{" "}
+                {displayName.toLowerCase()} needs. Fast, reliable &amp;
+                affordable service near you.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 bg-white shadow-lg rounded-2xl p-2 border border-gray-100 max-w-xl">
-              <div className="flex item-center gap-2 flex-1 px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 focus-within:border-[#FF4D7D] transition-colors">
+            <div className="flex flex-col items-center md:flex-row sm:flex-row gap-3 bg-white shadow-lg rounded-2xl p-2 border border-gray-100 max-w-xl">
+              <div className="flex items-center gap-2 flex-1 px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 focus-within:border-[#FF4D7D] transition-colors">
                 <PinLocationIcon />
                 <input
                   className="bg-transparent text-sm text-gray-700 w-full outline-none placeholder-gray-400"
