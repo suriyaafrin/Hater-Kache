@@ -14,6 +14,7 @@ import { plumbersServices } from "../../data/serviceLists.js";
 import { badges, plumbersWorkers } from "../../data/all-Data/Plumber.jsx";
 import { ServiceDropdown } from "../pages/all-services/service-dropdown/index.jsx";
 import { services } from "../../data/data.jsx";
+import Popular from "../Component/popular/Popular.jsx";
 
 const capitalize = (str) =>
   str
@@ -104,7 +105,7 @@ function PlumbingHero({ slug }) {
 
   return (
     <div>
-      <div className="min-h-screen bg-gray-50 font-sans">
+      <div className="min-h bg-gray-50 font-sans">
         {selectedPlumber && (
           <PlumberDetail
             plumber={selectedPlumber}
@@ -212,6 +213,9 @@ function PlumbingHero({ slug }) {
             <ToolboxIllustration />
           </div>
         </section>
+      </div>
+      <div className="w-full">
+        <Popular/>
       </div>
     </div>
   );
