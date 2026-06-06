@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { SearchIcon } from "../../img_folder/img";
 
 const trustBadges = [
@@ -59,10 +60,11 @@ const popularServices = ["Plumbing", "Electrical", "AC Repair", "Cleaning", "Pai
 
 function Hero() {
   const [location, setLocation] = useState("");
+  const navigate = useNavigate();
 
   const handleSearch = () => {
     if (!location.trim()) return;
-    console.log("Searching for technicians near:", location);
+    navigate(`/services?location=${encodeURIComponent(location.trim())}`);
   };
 
   const stats = [
@@ -89,13 +91,12 @@ function Hero() {
             Book reliable and verified professionals for all your home and office service needs.
           </p>
 
-      
           <div
             role="search"
             aria-label="Search technicians by location"
             className="flex items-center bg-white rounded-full border border-gray-200 shadow-sm px-4 py-1.5 gap-3 max-w-sm"
           >
-            <SearchIcon/>
+            <SearchIcon />
 
             <label htmlFor="location-input" className="sr-only">Enter your location</label>
             <input
@@ -117,7 +118,6 @@ function Hero() {
             </button>
           </div>
 
-          
           <ul className="flex flex-wrap gap-7 list-none m-0 p-0 mt-8">
             {stats.map(({ value, label }) => (
               <li key={label}>
@@ -127,7 +127,6 @@ function Hero() {
             ))}
           </ul>
 
-        
           <div className="flex gap-5 mt-6 flex-wrap">
             {trustBadges.map((badge) => (
               <div key={badge.label} className="flex items-center gap-2 text-xs text-[#1E3A5F]">

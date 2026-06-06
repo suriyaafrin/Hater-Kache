@@ -32,7 +32,8 @@ function PlumbingHero({ slug }) {
     : { serviceList: plumbersServices };
 
   const workers = currentService?.slugData?.technicians ?? plumbersWorkers;
-  const defaultService = filteredServices.serviceList?.[0]?.label ?? "All Services";
+  const defaultService =
+    filteredServices.serviceList?.[0]?.label ?? "All Services";
 
   const [selected, setSelected] = useState(defaultService);
   const [open, setOpen] = useState(false);
@@ -73,13 +74,11 @@ function PlumbingHero({ slug }) {
           !loc ||
           p.areas.some(
             (a) =>
-              a.toLowerCase().includes(loc) || loc.includes(a.toLowerCase())
+              a.toLowerCase().includes(loc) || loc.includes(a.toLowerCase()),
           );
-        const isAllServices =
-          svc === "All Services" || svc === "all-services";
+        const isAllServices = svc === "All Services" || svc === "all-services";
         const matchSvc =
-          isAllServices ||
-          p.service.toLowerCase() === svc.toLowerCase();
+          isAllServices || p.service.toLowerCase() === svc.toLowerCase();
         return matchLoc && matchSvc;
       });
 
@@ -198,14 +197,16 @@ function PlumbingHero({ slug }) {
               ))}
             </div>
 
-            <ResultsPanel
-              results={results}
-              loading={loading}
-              searched={searched}
-              query={query}
-              selectedId={selectedPlumber?.id}
-              onSelect={setSelectedPlumber}
-            />
+            {location.trim() !== "" && (
+              <ResultsPanel
+                results={results}
+                loading={loading}
+                searched={searched}
+                query={query}
+                selectedId={selectedPlumber?.id}
+                onSelect={setSelectedPlumber}
+              />
+            )}
           </div>
 
           <div className="shrink-0 w-64 h-64 md:w-80 md:h-80 relative flex items-center justify-center">
@@ -215,7 +216,7 @@ function PlumbingHero({ slug }) {
         </section>
       </div>
       <div className="w-full">
-        <Popular/>
+        <Popular />
       </div>
     </div>
   );

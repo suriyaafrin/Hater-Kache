@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { CloseIcon, HamburgerIcon } from "../../img_folder/img";
+import ComplaintModal from "./getTouch";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -9,14 +10,16 @@ const navLinks = [
   { label: "Review", href: "/review" },
 ];
 
-
 const isActive = (href, pathname) => {
   if (href === "/") return pathname === "/";
-  return pathname.startsWith(href); 
+  return pathname.startsWith(href);
 };
+
+<ComplaintModal/>
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
 
@@ -27,11 +30,12 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
+    document.body.style.overflow = menuOpen || modalOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
-  }, [menuOpen]);
+  }, [menuOpen, modalOpen]);
 
   const close = () => setMenuOpen(false);
+  const openModal = () => { setMenuOpen(false); setModalOpen(true); };
 
   return (
     <>
@@ -60,15 +64,16 @@ export default function Navbar() {
             })}
           </ul>
 
-          <button className="hidden md:block text-xs font-bold px-5 py-2.5 bg-[#FF4D7D] text-white rounded-full hover:bg-[#e63d6d] active:scale-95 transition-all">
+          <button
+            onClick={openModal}
+            className="hidden md:block text-xs font-bold px-5 py-2.5 bg-[#FF4D7D] text-white rounded-full hover:bg-[#e63d6d] active:scale-95 transition-all">
             Get in touch
           </button>
 
           <button onClick={() => setMenuOpen(o => !o)} aria-label="Toggle menu"
             className="flex md:hidden p-2 rounded-lg hover:bg-[#FFD6E0] transition-colors">
-            <HamburgerIcon/>
+            <HamburgerIcon />
           </button>
-
         </div>
       </nav>
 
@@ -83,7 +88,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between px-6 py-5 border-b border-[#FFD6E0]">
           <a href="#" onClick={close}><img src="/Web_Logo.png" alt="Logo" className="h-10 w-auto" /></a>
           <button onClick={close} className="p-2 rounded-lg hover:bg-[#FFD6E0] transition-colors">
-            <CloseIcon/>
+            <CloseIcon />
           </button>
         </div>
 
@@ -105,13 +110,15 @@ export default function Navbar() {
         </ul>
 
         <div className="px-6 pb-8">
-          <button onClick={close}
+          <button
+            onClick={openModal}
             className="w-full py-3 bg-[#FF4D7D] text-white text-sm font-bold rounded-full hover:bg-[#e63d6d] active:scale-95 transition-all">
             Get in touch
           </button>
         </div>
-
       </aside>
+
+      {modalOpen && <ComplaintModal onClose={() => setModalOpen(false)} />}
     </>
   );
 }

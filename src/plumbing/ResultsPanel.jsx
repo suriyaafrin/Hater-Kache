@@ -32,7 +32,7 @@ function ResultsPanel({
         <div className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center mx-auto mb-3">
           <LargeSearchIcon />
         </div>
-        <p className="text-sm font-medium text-gray-500">No plumbers found</p>
+        <p className="text-sm font-medium text-gray-500">No Technicians found</p>
         <p className="text-xs text-gray-400 mt-1">
           Try a different location or service type
         </p>
@@ -44,7 +44,7 @@ function ResultsPanel({
     <div className="mt-6 max-w-xl">
       <div className="flex items-center justify-between mb-3">
         <p className="text-sm font-semibold text-gray-700">
-          {results.length} plumber{results.length !== 1 ? "s" : ""} found
+          {results.length} Technician{results.length !== 1 ? "s" : ""} found
         </p>
         <p className="text-xs text-gray-400">
           {query.location} · {query.service}
