@@ -60,7 +60,7 @@ function WriteReviewModal({ onClose, onSubmit }) {
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden">
-        {/* Modal Header */}
+        
         <div className="px-6 pt-6 pb-4 border-b border-gray-100 flex items-center justify-between">
           <div>
             <h2 className="text-lg font-bold text-[#1E3A5F]">Write a Review</h2>
@@ -90,7 +90,6 @@ function WriteReviewModal({ onClose, onSubmit }) {
           </div>
         ) : (
           <div className="px-6 py-5 flex flex-col gap-4">
-            {/* Name */}
             <div>
               <label className="text-xs font-semibold text-[#1E3A5F] block mb-1">
                 Your Name
@@ -110,7 +109,6 @@ function WriteReviewModal({ onClose, onSubmit }) {
               )}
             </div>
 
-            {/* Service */}
             <div>
               <label className="text-xs font-semibold text-[#1E3A5F] block mb-1">
                 Service
@@ -135,7 +133,6 @@ function WriteReviewModal({ onClose, onSubmit }) {
               )}
             </div>
 
-            {/* Rating */}
             <div>
               <label className="text-xs font-semibold text-[#1E3A5F] block mb-1.5">
                 Rating
@@ -152,7 +149,7 @@ function WriteReviewModal({ onClose, onSubmit }) {
               )}
             </div>
 
-            {/* Comment */}
+           
             <div>
               <label className="text-xs font-semibold text-[#1E3A5F] block mb-1">
                 Your Review
@@ -172,7 +169,7 @@ function WriteReviewModal({ onClose, onSubmit }) {
               )}
             </div>
 
-            {/* Actions */}
+            
             <div className="flex gap-2 pt-1">
               <button
                 onClick={onClose}

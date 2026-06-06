@@ -69,13 +69,13 @@ export default function Review() {
         />
       )}
 
-      {/* Header */}
+      
       <div className="flex flex-col items-center gap-2 max-w-3xl mx-auto mb-8">
         <h3 className="font-bold text-[#1E3A5C] text-2xl">Reviews</h3>
         <p className="text-gray-500 text-sm">See what our customers are saying about us!</p>
       </div>
 
-      {/* Rating Card */}
+      
       <div className="flex items-center max-w-6xl mx-auto bg-white border border-gray-100 rounded-2xl px-8 py-6 shadow-sm mb-6">
         <div className="flex flex-col items-center gap-1 min-w-25">
           <span className="text-5xl font-bold text-[#1E3A5F] leading-none">{avgRating}</span>
@@ -113,7 +113,7 @@ export default function Review() {
         </div>
       </div>
 
-      {/* Reviews List */}
+      
       <div className="max-w-6xl mx-auto bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm divide-y divide-gray-100">
         {reviews.map((r, idx) => (
           <div key={r.id} className="px-6 py-5">
@@ -142,7 +142,7 @@ export default function Review() {
         ))}
       </div>
 
-      {/* Share Bar */}
+    
       <div className="max-w-6xl mx-auto mt-4 bg-white border border-gray-100 rounded-2xl px-6 py-4 shadow-sm flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-yellow-50 flex items-center justify-center text-xl">💬</div>
