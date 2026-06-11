@@ -1,6 +1,19 @@
 import { useState } from "react";
-import { CheckIcon, CloseIcon, InfoIcon, PhoneIcon, WarningIcon, UserInputIcon, CalendarIcon } from "../img_folder/img";
-import { fieldLabels, keyframeStyles, requiredFields, timeOptions } from "../../data/all-Data/Plumber";
+import {
+  CheckIcon,
+  CloseIcon,
+  InfoIcon,
+  PhoneIcon,
+  WarningIcon,
+  UserInputIcon,
+  CalendarIcon,
+} from "../img_folder/img";
+import {
+  fieldLabels,
+  keyframeStyles,
+  requiredFields,
+  timeOptions,
+} from "../../data/all-Data/Plumber";
 
 function BookingForm({ plumber, onClose, onConfirm }) {
   const [form, setForm] = useState({
@@ -58,8 +71,7 @@ function BookingForm({ plumber, onClose, onConfirm }) {
       setTimeout(() => setShakeFields({}), 500);
       return;
     }
-    setSubmitted(true);
-    onConfirm?.(form);
+    setSubmitted(true); // ← only this, no onConfirm here
   }
 
   const missingCount = requiredFields.filter((f) => {
@@ -79,14 +91,16 @@ function BookingForm({ plumber, onClose, onConfirm }) {
           <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center">
             <CheckIcon />
           </div>
-          <h3 className="text-xl font-bold text-[#1E3A5F]">Booking Confirmed!</h3>
+          <h3 className="text-xl font-bold text-[#1E3A5F]">
+            Booking Confirmed!
+          </h3>
           <p className="text-sm text-gray-500">
             Your booking with{" "}
             <span className="font-semibold text-[#FF4D7D]">{mock.name}</span>{" "}
             has been placed successfully.
           </p>
           <button
-            onClick={onClose}
+            onClick={onConfirm} // ← this closes both modals
             className="mt-2 w-full py-3 bg-[#FF4D7D] text-white font-semibold rounded-xl text-sm hover:bg-[#e0365f] transition-colors"
           >
             Done
@@ -109,13 +123,14 @@ function BookingForm({ plumber, onClose, onConfirm }) {
           onClick={(e) => e.stopPropagation()}
           style={{ fontFamily: "'DM Sans', sans-serif" }}
         >
-          
           <div className="px-5 pt-5 pb-3 border-b border-gray-100 shrink-0">
             <div className="flex items-center gap-2 mb-0.5">
               <span className="text-xs font-bold text-[#FF4D7D] bg-pink-50 border border-pink-100 rounded-full px-2.5 py-0.5">
                 Step 2
               </span>
-              <h2 className="text-base font-bold text-[#1E3A5F]">Booking Details</h2>
+              <h2 className="text-base font-bold text-[#1E3A5F]">
+                Booking Details
+              </h2>
               <button
                 onClick={onClose}
                 className="ml-auto w-7 h-7 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
@@ -123,7 +138,9 @@ function BookingForm({ plumber, onClose, onConfirm }) {
                 <CloseIcon />
               </button>
             </div>
-            <p className="text-xs text-gray-400">Fill in the details to book your service</p>
+            <p className="text-xs text-gray-400">
+              Fill in the details to book your service
+            </p>
           </div>
 
           <div className="overflow-y-auto flex-1 px-5 py-4 space-y-4">
@@ -136,10 +153,14 @@ function BookingForm({ plumber, onClose, onConfirm }) {
                   <WarningIcon />
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-red-600">Please fill in all required fields</p>
+                  <p className="text-xs font-semibold text-red-600">
+                    Please fill in all required fields
+                  </p>
                   <ul className="mt-1 space-y-0.5">
                     {Object.values(errors).map((msg, i) => (
-                      <li key={i} className="text-xs text-red-400">• {msg}</li>
+                      <li key={i} className="text-xs text-red-400">
+                        • {msg}
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -152,11 +173,12 @@ function BookingForm({ plumber, onClose, onConfirm }) {
               </div>
               <div>
                 <p className="text-sm font-bold text-[#1E3A5F]">{mock.name}</p>
-                <p className="text-xs text-gray-500">{mock.rate} • {mock.service}</p>
+                <p className="text-xs text-gray-500">
+                  {mock.rate} • {mock.service}
+                </p>
               </div>
             </div>
 
-            
             <div style={shakeStyle("fullName")}>
               <label className="block text-xs font-semibold text-[#1E3A5F] mb-1.5">
                 Full name <span className="text-[#FF4D7D]">*</span>
@@ -178,14 +200,16 @@ function BookingForm({ plumber, onClose, onConfirm }) {
                 />
               </div>
               {errors.fullName && (
-                <p style={slideUpStyle} className="mt-1 text-xs text-red-400 flex items-center gap-1">
+                <p
+                  style={slideUpStyle}
+                  className="mt-1 text-xs text-red-400 flex items-center gap-1"
+                >
                   <InfoIcon />
                   {errors.fullName}
                 </p>
               )}
             </div>
 
-            
             <div style={shakeStyle("phone")}>
               <label className="block text-xs font-semibold text-[#1E3A5F] mb-1.5">
                 Phone number <span className="text-[#FF4D7D]">*</span>
@@ -211,7 +235,10 @@ function BookingForm({ plumber, onClose, onConfirm }) {
                   type="tel"
                   value={form.phone}
                   onChange={(e) =>
-                    setForm((prev) => ({ ...prev, phone: e.target.value.replace(/\D/g, "") }))
+                    setForm((prev) => ({
+                      ...prev,
+                      phone: e.target.value.replace(/\D/g, ""),
+                    }))
                   }
                   placeholder="Your phone number"
                   className={`flex-1 px-3 py-2.5 text-sm border rounded-xl focus:outline-none focus:ring-1 transition placeholder:text-gray-300 ${
@@ -222,7 +249,10 @@ function BookingForm({ plumber, onClose, onConfirm }) {
                 />
               </div>
               {errors.phone && (
-                <p style={slideUpStyle} className="mt-1 text-xs text-red-400 flex items-center gap-1">
+                <p
+                  style={slideUpStyle}
+                  className="mt-1 text-xs text-red-400 flex items-center gap-1"
+                >
                   <InfoIcon />
                   {errors.phone}
                 </p>
@@ -235,9 +265,23 @@ function BookingForm({ plumber, onClose, onConfirm }) {
               </label>
               <div className="relative">
                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
-                  <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2}>
-                    <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" strokeLinecap="round" strokeLinejoin="round" />
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
                   </svg>
                 </span>
                 <input
@@ -253,7 +297,10 @@ function BookingForm({ plumber, onClose, onConfirm }) {
                 />
               </div>
               {errors.address && (
-                <p style={slideUpStyle} className="mt-1 text-xs text-red-400 flex items-center gap-1">
+                <p
+                  style={slideUpStyle}
+                  className="mt-1 text-xs text-red-400 flex items-center gap-1"
+                >
                   <InfoIcon />
                   {errors.address}
                 </p>
@@ -281,14 +328,18 @@ function BookingForm({ plumber, onClose, onConfirm }) {
                   />
                 </div>
                 {errors.date && (
-                  <p style={slideUpStyle} className="mt-1 text-xs text-red-400">Required</p>
+                  <p style={slideUpStyle} className="mt-1 text-xs text-red-400">
+                    Required
+                  </p>
                 )}
               </div>
               <div>
-                <label className="block text-xs font-semibold text-[#1E3A5F] mb-1.5">Time</label>
+                <label className="block text-xs font-semibold text-[#1E3A5F] mb-1.5">
+                  Time
+                </label>
                 <div className="relative">
                   <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
-                    <CloseIcon/>
+                    <CloseIcon />
                   </span>
                   <select
                     value={form.time}
@@ -296,14 +347,15 @@ function BookingForm({ plumber, onClose, onConfirm }) {
                     className="w-full pl-9 pr-2 py-2.5 text-xs border border-gray-200 rounded-xl focus:outline-none focus:border-[#FF4D7D] bg-white appearance-none cursor-pointer text-gray-600"
                   >
                     {timeOptions.map((t) => (
-                      <option key={t} value={t}>{t}</option>
+                      <option key={t} value={t}>
+                        {t}
+                      </option>
                     ))}
                   </select>
                 </div>
               </div>
             </div>
 
-            
             <div>
               <label className="block text-xs font-semibold text-[#1E3A5F] mb-1.5">
                 Problem description
@@ -312,13 +364,16 @@ function BookingForm({ plumber, onClose, onConfirm }) {
                 <textarea
                   value={form.description}
                   onChange={(e) => {
-                    if (e.target.value.length <= 150) handleChange("description")(e);
+                    if (e.target.value.length <= 150)
+                      handleChange("description")(e);
                   }}
                   placeholder="Describe the issue..."
                   rows={3}
                   className="w-full px-3 pt-2.5 pb-6 text-sm border border-gray-200 rounded-xl focus:outline-none focus:border-[#FF4D7D] focus:ring-1 focus:ring-pink-200 transition resize-none placeholder:text-gray-300"
                 />
-                <span className="absolute bottom-2 right-3 text-xs text-gray-400">{descLen}/150</span>
+                <span className="absolute bottom-2 right-3 text-xs text-gray-400">
+                  {descLen}/150
+                </span>
               </div>
             </div>
           </div>
@@ -326,7 +381,8 @@ function BookingForm({ plumber, onClose, onConfirm }) {
           <div className="px-5 pb-6 pt-3 shrink-0 border-t border-gray-100">
             {missingCount > 0 && (
               <p className="text-center text-xs text-gray-400 mb-2">
-                {missingCount} required field{missingCount > 1 ? "s" : ""} still empty
+                {missingCount} required field{missingCount > 1 ? "s" : ""} still
+                empty
               </p>
             )}
             <button

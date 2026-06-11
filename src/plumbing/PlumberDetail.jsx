@@ -1,8 +1,18 @@
-import React, { useState } from 'react'
-import StarRating from './PlumberRating'
-import InfoRow from './InfoRow'
-import Bookingform from './Bookingform'
-import { AddressIcon, CalendarIcon, CallIcon, CloseIcons,  EmailIcons,  PhoneIcons, ServiceIcon, TaskIcon, VerifiedIcon } from '../img_folder/img';
+import React, { useState } from "react";
+import StarRating from "./PlumberRating";
+import InfoRow from "./InfoRow";
+import Bookingform from "./Bookingform";
+import {
+  AddressIcon,
+  CalendarIcon,
+  CallIcon,
+  CloseIcons,
+  EmailIcons,
+  PhoneIcons,
+  ServiceIcon,
+  TaskIcon,
+  VerifiedIcon,
+} from "../img_folder/img";
 
 function PlumberDetail({ plumber, onClose }) {
   const [showBooking, setShowBooking] = useState(false);
@@ -34,7 +44,9 @@ function PlumberDetail({ plumber, onClose }) {
               </div>
               <div>
                 <h2 className="text-xl font-bold text-white">{plumber.name}</h2>
-                <p className="text-blue-200 text-sm mt-0.5">{plumber.service}</p>
+                <p className="text-blue-200 text-sm mt-0.5">
+                  {plumber.service}
+                </p>
                 <div className="mt-1 flex items-center gap-2">
                   <StarRating rating={plumber.rating} size="lg" />
                   <span className="text-blue-200 text-xs">
@@ -70,33 +82,25 @@ function PlumberDetail({ plumber, onClose }) {
 
             <div className="grid grid-cols-1 gap-3.5 pt-1">
               <InfoRow
-                icon={
-                  <ServiceIcon />
-                }
+                icon={<ServiceIcon />}
                 label="Specialisation"
                 value={plumber.service}
               />
 
               <InfoRow
-                icon={
-                  <VerifiedIcon />
-                }
+                icon={<VerifiedIcon />}
                 label="Experience"
                 value={plumber.experience ?? "5+ years"}
               />
 
               <InfoRow
-                icon={
-                  <PhoneIcons />
-                }
+                icon={<PhoneIcons />}
                 label="Phone"
                 value={plumber.phone ?? "+1 (555) 000-0000"}
               />
 
               <InfoRow
-                icon={
-                  <EmailIcons />
-                }
+                icon={<EmailIcons />}
                 label="Email"
                 value={
                   plumber.email ??
@@ -124,9 +128,7 @@ function PlumberDetail({ plumber, onClose }) {
               </div>
 
               <InfoRow
-                icon={
-                  <TaskIcon />
-                }
+                icon={<TaskIcon />}
                 label="Jobs Completed"
                 value={plumber.jobsCompleted ?? `${plumber.reviews * 3} jobs`}
               />
@@ -138,7 +140,6 @@ function PlumberDetail({ plumber, onClose }) {
                 Call Now
               </button>
 
-        
               <button
                 onClick={() => setShowBooking(true)}
                 className="flex-1 py-3 bg-[#FF4D7D] hover:bg-[#8d2843] active:scale-95 text-white text-sm font-semibold rounded-xl transition-all shadow-md shadow-red-200 flex items-center justify-center gap-2"
@@ -155,10 +156,14 @@ function PlumberDetail({ plumber, onClose }) {
         <Bookingform
           plumber={plumber}
           onClose={() => setShowBooking(false)}
+          onConfirm={() => {
+            setShowBooking(false);
+            onClose();
+          }}
         />
       )}
     </>
   );
 }
 
-export default PlumberDetail
+export default PlumberDetail;

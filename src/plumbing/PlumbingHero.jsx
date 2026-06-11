@@ -65,7 +65,8 @@ function PlumbingHero({ slug }) {
   }, [location]);
 
   useEffect(() => {
-    const newDefault = filteredServices.serviceList?.[0]?.label ?? "All Services";
+    const newDefault =
+      filteredServices.serviceList?.[0]?.label ?? "All Services";
     setSelected(newDefault);
     selectedRef.current = newDefault;
     setLocation("");
@@ -73,7 +74,7 @@ function PlumbingHero({ slug }) {
     setSelectedPlumber(null);
     setResults([]);
     setSearched(false);
-  }, [slug]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [slug]); 
 
   useEffect(() => {
     const handler = (e) => {
@@ -87,9 +88,8 @@ function PlumbingHero({ slug }) {
     const locLower = loc.trim().toLowerCase();
     const isAll = svc === "All Services" || svc === "all-services";
 
-    const svcLabel = svc.includes("-") && svc !== "all-services"
-      ? slugToLabel(svc)
-      : svc;
+    const svcLabel =
+      svc.includes("-") && svc !== "all-services" ? slugToLabel(svc) : svc;
 
     const filtered = workerList.filter((p) => {
       const matchLoc =
@@ -120,12 +120,13 @@ function PlumbingHero({ slug }) {
     setTimeout(() => {
       filterAndShow(workers, svc, locationRef.current);
       setLoading(false);
-    }, 700);
+    }, 400);
   };
 
   const handleServiceChange = (value) => {
     setSelected(value);
     selectedRef.current = value;
+    // filterAndShow(workers, value, locationRef.current);
   };
 
   const handleKeyDown = (e) => {

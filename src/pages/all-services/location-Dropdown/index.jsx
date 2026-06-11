@@ -29,13 +29,13 @@ export function LocationDropdown({ value, onChange }) {
 
   return (
     <div ref={shellRef} className="relative flex-1">
-      {/* Trigger */}
+      
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
         className="w-full flex items-center gap-2 pr-1 outline-none bg-transparent cursor-pointer transition-colors"
       >
-        {/* Pin icon */}
+      
         <span className="shrink-0 text-[#FF4D7D]">
           <PinLocationIcon />
         </span>
@@ -66,7 +66,7 @@ export function LocationDropdown({ value, onChange }) {
         </svg>
       </button>
 
-      {/* Dropdown Panel */}
+      
       {isOpen && (
         <div className="absolute left-0 top-full mt-1 z-50 w-full bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
           <div className="py-1">

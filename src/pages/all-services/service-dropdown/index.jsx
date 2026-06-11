@@ -27,13 +27,13 @@ export function ServiceDropdown({ dropDownData, onChange, value }) {
 
   return (
     <div ref={shellRef} className="relative flex-1">
-      {/* Trigger */}
+      
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
         className="w-full flex items-center gap-2 pr-1 outline-none bg-transparent cursor-pointer transition-colors"
       >
-        {/* Selected icon */}
+        
         {hasValue && selectedItem?.icon && (
           <span className="shrink-0 text-[#FF4D7D]">
             {selectedItem.icon}
@@ -70,7 +70,7 @@ export function ServiceDropdown({ dropDownData, onChange, value }) {
       </button>
 
       {isOpen && (
-        <div className="absolute  -left-3.75 top-full mt-1 z-50 w-auto bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+        <div className="absolute -left-10 top-full mt-1 z-50 w-100 bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
           <div className="py-1">
             {dropDownData.map((service, index) => {
               const slug = service.slug || service.id;

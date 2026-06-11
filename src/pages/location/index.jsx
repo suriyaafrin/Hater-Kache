@@ -7,7 +7,6 @@ export default function Location() {
 
   return (
     <>
-      {/* Header */}
       <div className="flex items-center justify-around">
         <div>
           <h2 className="text-2xl font-bold text-[#1E3A5C]">
@@ -17,11 +16,11 @@ export default function Location() {
 
         <div className="flex gap-3 cursor-pointer">
           <LocationPinIcon />
-          
+          <h2 className="text-lg font-bold text-gray-400">Use current location</h2>
         </div>
       </div>
 
-      {/* Search Box */}
+     
       <div
         className={`flex items-center max-w-6xl mx-auto mt-10 gap-3 px-10 py-3 rounded-2xl border-2 bg-white transition-all duration-200 shadow-sm
         ${
@@ -60,8 +59,8 @@ export default function Location() {
         )}
       </div>
 
-      {/* Dhaka Map */}
-      {/* <div className=" p-5 max-w-6xl mx-auto mt-8 overflow-hidden rounded-3xl border border-gray-200 shadow-lg">
+      
+      <div className=" p-5 max-w-6xl mx-auto mt-8 overflow-hidden rounded-3xl border border-gray-200 shadow-lg">
         <iframe
           title="Dhaka Map"
           src="https://www.google.com/maps?q=Dhaka,Bangladesh&z=12&output=embed"
@@ -71,7 +70,7 @@ export default function Location() {
           loading="lazy"
           allowFullScreen
         />
-      </div> */}
+      </div>
     </>
   );
 }
