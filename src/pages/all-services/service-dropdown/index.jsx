@@ -69,9 +69,8 @@ export function ServiceDropdown({ dropDownData, onChange, value }) {
         </svg>
       </button>
 
-      {/* Dropdown Panel */}
       {isOpen && (
-        <div className="absolute left-0 top-full mt-1 z-50 w-full bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+        <div className="absolute  -left-3.75 top-full mt-1 z-50 w-auto bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
           <div className="py-1">
             {dropDownData.map((service, index) => {
               const slug = service.slug || service.id;

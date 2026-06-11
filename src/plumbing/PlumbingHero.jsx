@@ -15,6 +15,7 @@ import { badges, plumbersWorkers } from "../../data/all-Data/Plumber.jsx";
 import { ServiceDropdown } from "../pages/all-services/service-dropdown/index.jsx";
 import { services } from "../../data/data.jsx";
 import Popular from "../Component/popular/Popular.jsx";
+import { LocationDropdown } from "../pages/all-services/location-Dropdown/index.jsx";
 
 const capitalize = (str) =>
   str
@@ -146,26 +147,13 @@ function PlumbingHero({ slug }) {
 
             <div className="flex flex-col items-center md:flex-row sm:flex-row gap-3 bg-white shadow-lg rounded-2xl p-2 border border-gray-100 max-w-xl">
               <div className="flex items-center gap-2 flex-1 px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 focus-within:border-[#FF4D7D] transition-colors">
-                <PinLocationIcon />
-                <input
-                  className="bg-transparent text-sm text-gray-700 w-full outline-none placeholder-gray-400"
+                <LocationDropdown
                   value={location}
-                  onChange={(e) => setLocation(e.target.value)}
-                  onKeyDown={handleKeyDown}
-                  placeholder="Enter location"
+                  onChange={(id) => setLocation(id)}
                 />
-                {location && (
-                  <button
-                    onClick={() => setLocation("")}
-                    className="text-gray-300 hover:text-gray-500 transition-colors"
-                    aria-label="Clear location"
-                  >
-                    <SmallCloseIcon />
-                  </button>
-                )}
               </div>
 
-              <div className="flex item-center gap-2 flex-1 px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 focus-within:border-[#FF4D7D] transition-colors">
+              <div className="flex  item-center gap-2 flex-1 px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 focus-within:border-[#FF4D7D] transition-colors">
                 <SearchIcon />
                 <ServiceDropdown
                   dropDownData={filteredServices.serviceList}

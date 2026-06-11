@@ -17,7 +17,7 @@ export default function Location() {
 
         <div className="flex gap-3 cursor-pointer">
           <LocationPinIcon />
-          <p className="text-[#1E3A5C]">Use current location</p>
+          
         </div>
       </div>
 
@@ -61,7 +61,7 @@ export default function Location() {
       </div>
 
       {/* Dhaka Map */}
-      <div className=" p-5 max-w-6xl mx-auto mt-8 overflow-hidden rounded-3xl border border-gray-200 shadow-lg">
+      {/* <div className=" p-5 max-w-6xl mx-auto mt-8 overflow-hidden rounded-3xl border border-gray-200 shadow-lg">
         <iframe
           title="Dhaka Map"
           src="https://www.google.com/maps?q=Dhaka,Bangladesh&z=12&output=embed"
@@ -71,7 +71,7 @@ export default function Location() {
           loading="lazy"
           allowFullScreen
         />
-      </div>
+      </div> */}
     </>
   );
 }
