@@ -23,6 +23,12 @@ const capitalize = (str) =>
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
 
+const slugToLabel = (str) =>
+  str
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+
 function PlumbingHero({ slug }) {
   const currentService = slug
     ? services.find((service) => service.slug === slug)
@@ -50,8 +56,24 @@ function PlumbingHero({ slug }) {
 
   const ddRef = useRef(null);
   const selectedRef = useRef(defaultService);
+  const locationRef = useRef("");
 
   const displayName = slug ? capitalize(slug) : "All Services";
+
+  useEffect(() => {
+    locationRef.current = location;
+  }, [location]);
+
+  useEffect(() => {
+    const newDefault = filteredServices.serviceList?.[0]?.label ?? "All Services";
+    setSelected(newDefault);
+    selectedRef.current = newDefault;
+    setLocation("");
+    locationRef.current = "";
+    setSelectedPlumber(null);
+    setResults([]);
+    setSearched(false);
+  }, [slug]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const handler = (e) => {
@@ -61,34 +83,42 @@ function PlumbingHero({ slug }) {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  const runSearch = (svc = selectedRef.current) => {
-    const loc = location.trim().toLowerCase();
+  const filterAndShow = (workerList, svc, loc) => {
+    const locLower = loc.trim().toLowerCase();
+    const isAll = svc === "All Services" || svc === "all-services";
 
-    setLoading(true);
+    const svcLabel = svc.includes("-") && svc !== "all-services"
+      ? slugToLabel(svc)
+      : svc;
+
+    const filtered = workerList.filter((p) => {
+      const matchLoc =
+        !locLower ||
+        p.areas.some(
+          (a) =>
+            a.toLowerCase().includes(locLower) ||
+            locLower.includes(a.toLowerCase()),
+        );
+      const matchSvc =
+        isAll || p.service.toLowerCase() === svcLabel.toLowerCase();
+      return matchLoc && matchSvc;
+    });
+
+    filtered.sort((a, b) => {
+      if (a.available !== b.available) return a.available ? -1 : 1;
+      return b.rating - a.rating;
+    });
+
+    setResults(filtered);
     setSearched(true);
+    setQuery({ location: loc.trim() || "Anywhere", service: svcLabel });
+  };
+
+  const runSearch = (svc = selectedRef.current) => {
+    setLoading(true);
     setSelectedPlumber(null);
-    setQuery({ location: location.trim() || "Anywhere", service: svc });
-
     setTimeout(() => {
-      const filtered = workers.filter((p) => {
-        const matchLoc =
-          !loc ||
-          p.areas.some(
-            (a) =>
-              a.toLowerCase().includes(loc) || loc.includes(a.toLowerCase()),
-          );
-        const isAllServices = svc === "All Services" || svc === "all-services";
-        const matchSvc =
-          isAllServices || p.service.toLowerCase() === svc.toLowerCase();
-        return matchLoc && matchSvc;
-      });
-
-      filtered.sort((a, b) => {
-        if (a.available !== b.available) return a.available ? -1 : 1;
-        return b.rating - a.rating;
-      });
-
-      setResults(filtered);
+      filterAndShow(workers, svc, locationRef.current);
       setLoading(false);
     }, 700);
   };
@@ -96,7 +126,6 @@ function PlumbingHero({ slug }) {
   const handleServiceChange = (value) => {
     setSelected(value);
     selectedRef.current = value;
-    runSearch(value);
   };
 
   const handleKeyDown = (e) => {
@@ -153,7 +182,7 @@ function PlumbingHero({ slug }) {
                 />
               </div>
 
-              <div className="flex  item-center gap-2 flex-1 px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 focus-within:border-[#FF4D7D] transition-colors">
+              <div className="flex item-center gap-2 flex-1 px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 focus-within:border-[#FF4D7D] transition-colors">
                 <SearchIcon />
                 <ServiceDropdown
                   dropDownData={filteredServices.serviceList}
@@ -185,16 +214,14 @@ function PlumbingHero({ slug }) {
               ))}
             </div>
 
-            {location.trim() !== "" && (
-              <ResultsPanel
-                results={results}
-                loading={loading}
-                searched={searched}
-                query={query}
-                selectedId={selectedPlumber?.id}
-                onSelect={setSelectedPlumber}
-              />
-            )}
+            <ResultsPanel
+              results={results}
+              loading={loading}
+              searched={searched}
+              query={query}
+              selectedId={selectedPlumber?.id}
+              onSelect={setSelectedPlumber}
+            />
           </div>
 
           <div className="shrink-0 w-64 h-64 md:w-80 md:h-80 relative flex items-center justify-center">
