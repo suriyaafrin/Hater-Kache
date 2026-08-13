@@ -1,10 +1,5 @@
 @import "tailwindcss";
 
-/* ═══════════════════════════════════════════════════════════════════════
-   Hater-Kache design system
-   Jade green primary, mint surfaces, green-cast neutrals.
-   Display: Bricolage Grotesque · UI: Instrument Sans · Bangla: Anek Bangla
-   ═══════════════════════════════════════════════════════════════════════ */
 
 @theme {
   --font-display: "Bricolage Grotesque", "Instrument Sans", "Anek Bangla", system-ui, sans-serif;

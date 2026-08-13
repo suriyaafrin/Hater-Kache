@@ -9,11 +9,7 @@ import { takaRange } from "../lib/format";
 import { Avatar, ProximityRing, RatingInline } from "../ui/brand";
 import { Button, Card, Skeleton, Tag } from "../ui/primitives";
 
-/**
- * Reads from a structured symptom library today. `diagnose()` is the only call
- * to replace when a model endpoint is available — the rendering below already
- * expects causes, a recommended service, a price band and nearby professionals.
- */
+
 export default function Assistant() {
   const { area } = useApp();
   const [input, setInput] = useState("");

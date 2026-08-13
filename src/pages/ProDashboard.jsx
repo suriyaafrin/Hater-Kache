@@ -17,7 +17,6 @@ import { cx, minutes, taka } from "../lib/format";
 import { Avatar, BadgeRow, ProximityRing, Stars } from "../ui/brand";
 import { Button, Card, EmptyState, Progress, StatusDot, Tag } from "../ui/primitives";
 
-/* The signed-in professional for this demo. Swap for the authenticated user. */
 const ME = proByUid("electrical-1") || PROFESSIONALS[0];
 
 const EARNINGS_WEEK = [

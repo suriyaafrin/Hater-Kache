@@ -62,7 +62,7 @@ export default function Messages() {
     );
   }
 
-  /* mobile: list, then thread */
+
   return (
     <div className="shell py-6 lg:py-10">
       <h1 className="font-display text-[26px] font-bold leading-tight sm:text-[32px]">Messages</h1>

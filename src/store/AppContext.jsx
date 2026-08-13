@@ -4,8 +4,6 @@ import { NOTIFICATION_SEED } from "../../data/assistant";
 import { usePersistentState } from "../lib/hooks";
 import { AppContext } from "./useApp";
 
-/* A seeded history so dashboards, tracking and reviews have something honest
-   to render on a first visit. Clearing site data resets to exactly this. */
 const SEED_BOOKINGS = [
   {
     id: "HK-4821",

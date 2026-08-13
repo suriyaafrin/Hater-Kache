@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 
-/** Fade a node in the first time it enters the viewport. */
+
 export function useReveal(options = {}) {
   const ref = useRef(null);
   // Without IntersectionObserver everything is visible from the start.
@@ -25,7 +25,6 @@ export function useReveal(options = {}) {
   return [ref, shown];
 }
 
-/** Counts to `value` once visible. Respects reduced motion. */
 export function usePrefersReducedMotion() {
   return useSyncExternalStore(
     (onChange) => {
@@ -108,8 +107,6 @@ export function useOutsideClick(handler, active = true) {
   }, [handler, active]);
   return ref;
 }
-
-/** State mirrored into localStorage so a demo survives a refresh. */
 export function usePersistentState(key, initial) {
   const [value, setValue] = useState(() => {
     try {
@@ -124,14 +121,12 @@ export function usePersistentState(key, initial) {
     try {
       localStorage.setItem(key, JSON.stringify(value));
     } catch {
-      /* private mode — in-memory only */
     }
   }, [key, value]);
 
   return [value, setValue];
 }
 
-/** Simulates a network round-trip so skeleton states are real, not decorative. */
 export function useLoading(deps = [], ms = 550) {
   const key = JSON.stringify(deps);
   const [readyKey, setReadyKey] = useState(null);
@@ -175,7 +170,6 @@ export function useCopy() {
       setCopied(true);
       setTimeout(() => setCopied(false), 1600);
     } catch {
-      /* clipboard unavailable */
     }
   }, []);
   return [copied, copy];

@@ -20,8 +20,6 @@ import { Avatar, Stars } from "../../ui/brand";
 import { Button, Card, Reveal, SectionHead, Tag } from "../../ui/primitives";
 import MapPanel from "../map/MapPanel";
 
-/* ── How it works ────────────────────────────────────────────────────────── */
-
 const STEPS = [
   {
     title: "Describe the problem",

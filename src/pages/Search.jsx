@@ -38,7 +38,6 @@ export default function Search() {
   const submit = (value = query) => {
     setSubmitted(value);
     setQuery(value);
-    // A typed category ("electrician in Mirpur") narrows the filter for you.
     const hinted = parseQuery(value).category;
     if (hinted && hinted !== filters.category) setFilters((f) => ({ ...f, category: hinted }));
     const next = new URLSearchParams(params);

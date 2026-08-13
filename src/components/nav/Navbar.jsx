@@ -121,7 +121,7 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* mobile drawer */}
+
       {menu && (
         <div className="fixed inset-0 z-50 lg:hidden">
           <div className="absolute inset-0 bg-brand-900/35 backdrop-blur-[2px]" onClick={() => setMenu(false)} />

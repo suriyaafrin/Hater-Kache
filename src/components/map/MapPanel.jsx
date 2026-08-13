@@ -2,11 +2,7 @@ import { useMemo } from "react";
 import { LuLayers, LuLocate } from "react-icons/lu";
 import { cx, km as kmLabel } from "../../lib/format";
 
-/**
- * A drawn map, not a real one. It projects genuine lat/lng from
- * `data/locations.js`, so replacing it with Google Maps or Mapbox means
- * swapping this component and keeping the same props.
- */
+
 export default function MapPanel({
   center,
   points = [],
@@ -18,7 +14,6 @@ export default function MapPanel({
   const W = 640;
   const H = 420;
 
-  // Points may be professionals (coordinates live on `home`) or plain markers.
   const located = useMemo(
     () =>
       points
@@ -60,7 +55,6 @@ export default function MapPanel({
         </defs>
 
         <rect width={W} height={H} fill="url(#streets)" />
-        {/* a couple of arterial roads so it reads as a city, not graph paper */}
         <path d={`M0 ${H * 0.62} H${W}`} stroke="var(--color-brand-200)" strokeWidth="7" fill="none" />
         <path d={`M${W * 0.34} 0 V${H}`} stroke="var(--color-brand-200)" strokeWidth="6" fill="none" />
         <path d={`M0 ${H * 0.2} L${W} ${H * 0.42}`} stroke="var(--color-brand-100)" strokeWidth="10" fill="none" />
@@ -90,7 +84,6 @@ export default function MapPanel({
           />
         )}
 
-        {/* customer */}
         <circle cx={W / 2} cy={H / 2} r="13" fill="var(--color-brand-600)" opacity="0.18" />
         <circle cx={W / 2} cy={H / 2} r="6.5" fill="var(--color-brand-600)" stroke="#fff" strokeWidth="2.5" />
 

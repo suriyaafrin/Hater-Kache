@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { cx } from "../lib/format";
 import { useReveal } from "../lib/hooks";
 
-/* ── Button ──────────────────────────────────────────────────────────────── */
 
 const VARIANTS = {
   primary:
@@ -56,7 +55,6 @@ export function Button({
   return <Tag className={cls} {...rest}>{inner}</Tag>;
 }
 
-/* ── Surfaces ────────────────────────────────────────────────────────────── */
 
 export function Card({ as: Tag = "div", hover, className, children, ...rest }) {
   return (
@@ -125,7 +123,6 @@ export function StatusDot({ on = true, className }) {
   );
 }
 
-/* ── Section scaffolding ─────────────────────────────────────────────────── */
 
 export function SectionHead({ eyebrow, title, sub, action, align = "left", className }) {
   return (
@@ -160,7 +157,6 @@ export function Reveal({ delay = 0, className, children }) {
   );
 }
 
-/* ── Form fields ─────────────────────────────────────────────────────────── */
 
 export function Field({ label, hint, error, required, className, children }) {
   return (
@@ -199,7 +195,6 @@ export const Select = ({ className, children, ...rest }) => (
   </select>
 );
 
-/* ── States ──────────────────────────────────────────────────────────────── */
 
 export const Skeleton = ({ className }) => (
   <div className={cx("skeleton rounded-lg", className)} aria-hidden />
@@ -236,7 +231,6 @@ export function ErrorState({ title = "Something went wrong", body, onRetry, clas
   );
 }
 
-/* ── Tooltip ─────────────────────────────────────────────────────────────── */
 
 export function Tooltip({ label, children, className }) {
   return (
@@ -252,7 +246,6 @@ export function Tooltip({ label, children, className }) {
   );
 }
 
-/* ── Progress ────────────────────────────────────────────────────────────── */
 
 export function Progress({ value, className, tone = "bg-brand-600" }) {
   return (

@@ -1,9 +1,5 @@
 import { CATEGORIES, professionalsNear } from "../../data/catalog";
 import { AREAS } from "../../data/locations";
-
-/* People search for the trade, not our category name: "electrician", not
-   "Electrical". Longest keys are tested first so "washing machine" wins
-   over "wash". */
 const TRADE_WORDS = {
   "air conditioner": "ac-repair",
   "washing machine": "appliance-repair",
@@ -76,7 +72,6 @@ export const DEFAULT_FILTERS = {
   sort: "recommended",
 };
 
-/** Matches free text against name, trade, category and covered areas. */
 function matchesQuery(pro, q) {
   if (!q) return true;
   const term = q.toLowerCase().trim();
@@ -98,7 +93,6 @@ function matchesQuery(pro, q) {
   return words.some((w) => haystack.includes(w));
 }
 
-/** "electrician in Mirpur" → trade + area; "emergency plumber" → urgency. */
 export function parseQuery(q = "") {
   const term = ` ${q.toLowerCase().trim()} `;
 
@@ -128,16 +122,12 @@ export function runSearch({ area, query = "", filters = DEFAULT_FILTERS }) {
 
   if (filters.category !== "all") list = list.filter((p) => p.categorySlug === filters.category);
   if (filters.area !== "any") list = list.filter((p) => p.home.id === filters.area);
-  // Naming an area ("electrician in Mirpur") is an explicit override of the
-  // radius around wherever the customer currently is.
   if (filters.maxKm && !hint?.areaLabel) list = list.filter((p) => p.km <= filters.maxKm);
   if (filters.minRating) list = list.filter((p) => p.rating >= filters.minRating);
   if (filters.maxPrice) list = list.filter((p) => p.priceFrom <= filters.maxPrice);
   if (filters.availableOnly) list = list.filter((p) => p.available);
   if (filters.verifiedOnly) list = list.filter((p) => p.badges.includes("background"));
   if (filters.minYears) list = list.filter((p) => p.years >= filters.minYears);
-  // A recognised trade or area is a filter, not a text match — "electrician"
-  // should return electricians even though none of them say "electrician".
   if (hint?.category) list = list.filter((p) => p.categorySlug === hint.category);
   if (hint?.areaLabel)
     list = list.filter(
@@ -150,7 +140,6 @@ export function runSearch({ area, query = "", filters = DEFAULT_FILTERS }) {
     rating: (a, b) => b.rating - a.rating || a.km - b.km,
     price: (a, b) => a.priceFrom - b.priceFrom,
     experience: (a, b) => b.years - a.years || b.rating - a.rating,
-    // Closeness first, then reputation — the ranking the product actually promises.
     recommended: (a, b) => score(b) - score(a),
   };
   return [...list].sort(sorters[filters.sort] || sorters.recommended);

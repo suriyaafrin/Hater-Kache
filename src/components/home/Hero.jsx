@@ -44,7 +44,7 @@ export default function Hero() {
             Find verified technicians and service professionals near you — whenever you need them.
           </p>
 
-          {/* search */}
+
           <div className="mt-8 rounded-panel border border-line bg-white p-2 shadow-lift">
             <div className="flex flex-col gap-2 sm:flex-row">
               <div className="relative flex-1">
@@ -102,10 +102,9 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* visual */}
+
         <div className="relative mx-auto w-full max-w-md lg:mx-0">
           <div className="relative aspect-4/5 overflow-hidden rounded-[28px] border border-brand-100 bg-gradient-to-b from-brand-100 to-brand-50">
-            {/* proximity rings — the same language used on every card */}
             <svg viewBox="0 0 400 500" className="absolute inset-0 size-full" aria-hidden>
               {[80, 130, 180, 230].map((r, i) => (
                 <circle

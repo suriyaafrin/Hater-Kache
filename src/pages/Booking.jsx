@@ -159,7 +159,7 @@ export default function Booking() {
     setPhotos((p) => [...p, ...files.map((f) => f.name)]);
   };
 
-  /* ── success ─────────────────────────────────────────────────────────── */
+  
   if (done) {
     return (
       <div className="shell max-w-lg py-16 text-center lg:py-24">
