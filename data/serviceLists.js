@@ -167,3 +167,14 @@ export const laundryServices = [
   { id: "home-pickup-laundry", label: "Home Pickup Laundry" },
   { id: "office-laundry-service", label: "Office Laundry Service" },
 ];
+export const paintingServices = [
+  { id: "all-services", label: "All Services" },
+  { id: "full-home-painting", label: "Full Home Painting" },
+  { id: "single-room-painting", label: "Single Room Painting" },
+  { id: "exterior-painting", label: "Exterior Painting" },
+  { id: "wall-putty-primer", label: "Wall Putty & Primer" },
+  { id: "waterproof-coating", label: "Waterproof Coating" },
+  { id: "wood-polish-paint", label: "Wood Polish & Paint" },
+  { id: "grill-metal-paint", label: "Grill & Metal Paint" },
+  { id: "damp-patch-repair", label: "Damp & Patch Repair" },
+];
