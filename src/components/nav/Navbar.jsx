@@ -106,9 +106,11 @@ export default function Navbar() {
               </button>
             )}
 
-            <Button to="/services" size="sm" className="hidden sm:inline-flex">
-              Get a service
-            </Button>
+            <div className="hidden sm:block">
+              <Button to="/services" size="sm">
+                Get a service
+              </Button>
+            </div>
 
             <button
               onClick={() => setMenu(true)}
