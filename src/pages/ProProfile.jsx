@@ -96,7 +96,9 @@ export default function ProProfile() {
               <BadgeRow ids={pro.badges} className="mt-4" />
             </div>
 
-            <ProximityRing km={pro.km} size={84} className="hidden sm:block" />
+            <div className="hidden sm:block">
+              <ProximityRing km={pro.km} size={84} />
+            </div>
           </div>
         </div>
       </div>
